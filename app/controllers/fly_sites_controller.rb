@@ -1,9 +1,18 @@
+include Geokit::Geocoders
+
 class FlySitesController < ApplicationController
   before_action :set_fly_site, only: [:show, :update, :destroy]
 
   # GET /fly_sites
   def index
-    @fly_sites = FlySite.within(40, origin: [37.819492, -122.189156])
+    location = Geokit::Geocoders::MultiGeocoder.geocode(request.remote_ip)
+    Rails.logger.info "event=ip_address_reverese_geocode_lookup ip=#{request.remote_ip}"
+    if location.success
+      @fly_sites = FlySite.within(40, origin: [location.lat, location.lng])
+    else
+      @fly_sites = FlySite.all
+    end
+
     if params['sort']
       f = params['sort'].split(',').first
       field = f[0] == '-' ? f[1..-1] : f
