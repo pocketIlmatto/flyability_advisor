@@ -3,7 +3,7 @@ class FlySitesController < ApplicationController
 
   # GET /fly_sites
   def index
-    @fly_sites = FlySite.all
+    @fly_sites = FlySite.within(40, origin: [37.819492, -122.189156])
     if params['sort']
       f = params['sort'].split(',').first
       field = f[0] == '-' ? f[1..-1] : f
