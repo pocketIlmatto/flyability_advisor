@@ -3,9 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'active_model_serializers'
 gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
+gem "will_paginate"
 
 group :development, :test do
   gem 'pry', '0.11.3'
