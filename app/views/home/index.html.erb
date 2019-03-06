@@ -10,31 +10,43 @@
   <div class="row">
 
     <div class="input-group mb-3">
-      <input type="text" class="form-control" id="search-bar" onclick="askOnceForLocation()" placeholder="Oakland, CA" aria-label="Search for flying sites" aria-describedby="button-addon2">
+      <input type="text" class="form-control" id="search-bar" 
+        onclick="askOnceForLocation()" placeholder="Oakland, CA" 
+        aria-label="Search for flying sites" aria-describedby="button-addon2">
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-search-location"></i></button>
+        <button class="btn btn-outline-secondary" type="button" 
+          id="button-addon2"><i class="fas fa-search-location"></i>
+        </button>
       </div>
     </div>
   </div>
   <div class="row border rounded p-2" style="min-height: 400px;">
     <div class="col-sm mr-4" id="map"></div>
-    <div class="col-sm">
+    <div class="col-sm" id="site-list">
       
-      <% while @num_cells > 0 %>
+      <% @fly_sites.each do |fly_site| %>
         <div class="row mb-2">
-        <div class="col-sm-4 bg-primary rounded">
-          <a class="btn btn-primary" data-toggle="collapse" href="#collapse_"<%= @num_cells %> role="button" aria-expanded="false" aria-controls="collapse_"<%= @num_cells %> >Big Sur <%= @num_cells %></a>
-        </div>
-        <% %w(Mo Tu We Th Fr Sa Su).each do |dow| %>
-          <div class="col-sm-1 bg-secondary rounded ml-1"><a class="text-light align-middle text-center" href="#" role="button"><%= dow %></a></div>
-        <% end %>
-        <div class="collapse" id="collapse_"<%= @num_cells %>>
-          <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          <div class="col-sm-4 bg-primary rounded">
+            <a class="btn btn-primary" data-toggle="collapse" 
+              href="#collapse_"<%= fly_site.slug %> role="button"
+              aria-expanded="false" 
+              aria-controls="collapse_"<%= fly_site.slug %> >
+              <%= fly_site.name %>
+            </a>
+          </div>
+          <% %w(Mo Tu We Th Fr Sa Su).each do |dow| %>
+            <div class="col-sm-1 bg-secondary rounded ml-1" 
+              id=<%= "#{fly_site.slug}_#{dow}" %>>
+              <a class="text-light align-middle text-center" href="#" 
+                role="button"><%= dow %></a>
+            </div>
+          <% end %>
+          <div class="collapse" id="collapse_"<%= fly_site.slug %>>
+            <div class="card card-body">
+              NWS forecast diagram
+            </div>
           </div>
         </div>
-        </div>
-        <% @num_cells -= 1 %>
       <% end %>
     </div>
   </div>
