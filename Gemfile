@@ -4,7 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 gem 'active_model_serializers'
+gem 'bootstrap'
 gem 'geokit-rails'
+gem 'jquery-rails'
 gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rack-cors', :require => 'rack/cors'
