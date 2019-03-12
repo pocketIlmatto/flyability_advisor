@@ -1,7 +1,7 @@
 <% provide :head_tags do %>
     <script>
     document.addEventListener("DOMContentLoaded", function(){
-        initMap()
+        initMap(<%= @lat %>, <%= @lng %>, true)
     });
     </script>
 <% end %>
@@ -26,13 +26,16 @@
       
       <% @fly_sites.each do |fly_site| %>
         <div class="row mb-2">
-          <div class="col-sm-4 bg-primary rounded">
-            <a class="btn btn-primary" data-toggle="collapse" 
-              href="#collapse_"<%= fly_site.slug %> role="button"
+          <div class="col-sm-1">
+            <a class="btn" data-toggle="collapse" 
+              href=<%= '#'+"collapse_#{fly_site.slug}" %> role="button"
               aria-expanded="false" 
-              aria-controls="collapse_"<%= fly_site.slug %> >
-              <%= fly_site.name %>
+              aria-controls=<%= "collapse_#{fly_site.slug}" %> >
+              <i class="fas fa-plus"></i>
             </a>
+          </div>
+          <div class="col-sm-3 bg-primary rounded">
+            <%= link_to fly_site.name, fly_site, class: "btn-primary" %>
           </div>
           <% %w(Mo Tu We Th Fr Sa Su).each do |dow| %>
             <div class="col-sm-1 bg-secondary rounded ml-1" 
@@ -41,7 +44,7 @@
                 role="button"><%= dow %></a>
             </div>
           <% end %>
-          <div class="collapse" id="collapse_"<%= fly_site.slug %>>
+          <div class="collapse col-sm" id=<%= "collapse_#{fly_site.slug}" %>>
             <div class="card card-body">
               NWS forecast diagram
             </div>

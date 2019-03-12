@@ -3,14 +3,15 @@ var marker;
 var geocoder;
 var defaultLocation = {lat: 37.804829, lng: -122.272476};
 
-function initMap() {
-  var zoom = 4;
+function initMap(lat, lng, localStorageShouldOverride = false) {
+  var zoom = 8;
 
-  if (localStorage.latitude) {
-    userLocation = new google.maps.LatLng(parseFloat(localStorage.latitude), parseFloat(localStorage.longitude));
-    zoom = 8;
-  } else {
-    userLocation = new google.maps.LatLng(defaultLocation.lat, defaultLocation.lng);
+  userLocation = new google.maps.LatLng(lat, lng)
+  if (localStorageShouldOverride) {
+    if (localStorage.latitude) {
+      userLocation = new google.maps.LatLng(parseFloat(localStorage.latitude), parseFloat(localStorage.longitude));
+      zoom = 8;
+    } 
   }
 
   map = new google.maps.Map(
