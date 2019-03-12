@@ -1,0 +1,2 @@
+class FlyabilityScore < ApplicationRecord
+end

@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_045435) do
+ActiveRecord::Schema.define(version: 2019_03_12_063329) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "fly_sites", force: :cascade do |t|
@@ -30,6 +31,15 @@ ActiveRecord::Schema.define(version: 2019_03_12_045435) do
     t.string "dir_edge", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "flyability_scores", force: :cascade do |t|
+    t.bigint "fly_site_id"
+    t.hstore "scores", default: {}, null: false
+    t.string "calculation_version"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fly_site_id"], name: "index_flyability_scores_on_fly_site_id"
   end
 
   create_table "forecasts", force: :cascade do |t|
