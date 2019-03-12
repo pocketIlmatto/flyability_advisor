@@ -1,0 +1,26 @@
+<% provide :head_tags do %>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%= @lat %>, <%= @lng %>)
+    });
+    </script>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-sm mr-4" id="map"></div>
+    <div class="col-sm" id="site-details_"<%= @fly_site.slug %>>
+      <span>Name: <%= @fly_site.name %></span><br/>
+      <span>Sunrise hour (avg): <%= @fly_site.hourstart %></span><br/>
+      <span>Sunset hour (avg): <%= @fly_site.hourend %></span><br/>
+      <span>Min speed (ideal): <%= @fly_site.speedmin_ideal %> mph</span><br/>
+      <span>Max speed (ideal): <%= @fly_site.speedmax_ideal %> mph</span><br/>
+      <span>Min speed (edge): <%= @fly_site.speedmin_edge %> mph</span><br/>
+      <span>Max speed (edge): <%= @fly_site.speedmax_edge %> mph</span><br/>
+      <span>Wind direction(s) (ideal): <%= @fly_site.dir_ideal %></span><br/>
+      <span>Wind direction(s) (edge): <%= @fly_site.dir_edge %></span><br/>
+      <%= link_to "Flying sites list", root_path %>
+    </div>
+  </div>
+</div>

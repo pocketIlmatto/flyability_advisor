@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fly Sites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fly_sites.each do |fly_site| %>
+      <tr>
+        <td><%= link_to 'Show', fly_site %></td>
+        <td><%= link_to 'Edit', edit_fly_site_path(fly_site) %></td>
+        <td><%= link_to 'Destroy', fly_site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fly Site', new_fly_site_path %>

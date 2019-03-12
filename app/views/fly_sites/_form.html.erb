@@ -1,0 +1,37 @@
+<%= form_with(model: fly_site, local: true) do |form| %>
+  <% if fly_site.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fly_site.errors.count, "error") %> prohibited this fly_site from being saved:</h2>
+
+      <ul>
+      <% fly_site.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hourstart %>
+    <%= form.number_field :hourstart %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hourend %>
+    <%= form.number_field :hourend %>
+  </div>
+
+  <div class="field">
+    <%= form.label :speedmin_ideal %>
+    <%= form.number_field :speedmin_ideal %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

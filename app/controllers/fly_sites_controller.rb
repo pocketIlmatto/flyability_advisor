@@ -1,10 +1,10 @@
 include Geokit::Geocoders
 
 class FlySitesController < ApplicationController
-  before_action :set_fly_site, only: [:show, :update, :destroy]
+  before_action :set_fly_site, only: [:show, :edit, :update, :destroy]
 
-  # GET /fly_sites
-  def index
+  # GET /get_fly_sites
+  def get_fly_sites
     location = Geokit::Geocoders::MultiGeocoder.geocode(request.remote_ip)
     Rails.logger.info "event=ip_address_reverese_geocode_lookup ip=#{request.remote_ip}"
     if location.success
@@ -27,7 +27,9 @@ class FlySitesController < ApplicationController
 
   # GET /fly_sites/1
   def show
-    render json: @fly_site
+    @lat = @fly_site.lat
+    @lng = @fly_site.lng
+    @fly_site
   end
 
   # POST /fly_sites
@@ -35,24 +37,34 @@ class FlySitesController < ApplicationController
     @fly_site = FlySite.new(fly_site_params)
 
     if @fly_site.save
-      render json: @fly_site, status: :created, location: @fly_site
+      redirect_to @fly_site, notice: 'Flying site was successfully created.'
     else
-      render json: @fly_site.errors, status: :unprocessable_entity
+      render :new
     end
+  end
+
+  # GET /fly_sites/new
+  def new
+    @fly_site = FlySite.new
+  end
+
+  # GET /fly_sites/1/edit
+  def edit
   end
 
   # PATCH/PUT /fly_sites/1
   def update
     if @fly_site.update(fly_site_params)
-      render json: @fly_site
+      redirect_to @fly_site, notice: 'Flying site was successfully updated.'
     else
-      render json: @fly_site.errors, status: :unprocessable_entity
+      render :edit
     end
   end
 
   # DELETE /fly_sites/1
   def destroy
     @fly_site.destroy
+    redirect_to fly_sites_url, notice: 'Flying site was successfully destroyed.'
   end
 
   private
