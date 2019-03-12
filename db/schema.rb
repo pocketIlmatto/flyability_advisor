@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_184415) do
+ActiveRecord::Schema.define(version: 2019_03_12_045435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 2019_03_04_184415) do
     t.string "dir_edge", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "forecasts", force: :cascade do |t|
+    t.bigint "fly_site_id"
+    t.string "source"
+    t.datetime "data_updated_at"
+    t.jsonb "data", default: "{}", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fly_site_id"], name: "index_forecasts_on_fly_site_id"
+    t.index ["source", "fly_site_id", "data_updated_at"], name: "index_forecasts_on_source_and_fly_site_id_and_data_updated_at"
   end
 
 end
