@@ -11,6 +11,7 @@ gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rails', '~> 5.2.2'
+gem 'rest-client', '~> 2.0.2'
 gem "will_paginate"
 
 group :development, :test do
