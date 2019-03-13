@@ -37,11 +37,12 @@
           <div class="col-sm-3 bg-primary rounded">
             <%= link_to fly_site.name, fly_site, class: "btn-primary" %>
           </div>
-          <% %w(Mo Tu We Th Fr Sa Su).each do |dow| %>
-            <div class="col-sm-1 bg-secondary rounded ml-1" 
+          <% fly_site.latest_flyability_score.scores.sort.each do |score| %>
+            <% dow = get_dow(score[0]) %>
+            <% link_class = "col-sm-1 btn #{get_score_css_class(score[1])} ml-1" %>
+            <div class="<%= link_class %>" 
               id=<%= "#{fly_site.slug}_#{dow}" %>>
-              <a class="text-light align-middle text-center" href="#" 
-                role="button"><%= dow %></a>
+              <a class="text-light align-middle text-center" href="#" role="button"><%= dow %></a>
             </div>
           <% end %>
           <div class="collapse col-sm" id=<%= "collapse_#{fly_site.slug}" %>>

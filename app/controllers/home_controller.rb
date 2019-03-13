@@ -1,7 +1,7 @@
 include Geokit::Geocoders
 
 class HomeController < ApplicationController
-
+  
   def index
     # Default location for first time load
     @lat = 37.804829
@@ -15,7 +15,7 @@ class HomeController < ApplicationController
       @fly_sites = FlySite.within(40, 
         origin: [user_location.lat, user_location.lng])
     else
-      @fly_sites = FlySite.all
+      @fly_sites = FlySite.all.includes(:latest_flyability_score)
     end
 
     @fly_sites = @fly_sites.page(params[:page] ? params[:page][:number] : 1)
