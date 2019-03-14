@@ -37,17 +37,21 @@
           <div class="col-sm-3 bg-primary rounded">
             <%= link_to fly_site.name, fly_site, class: "btn-primary" %>
           </div>
-          <% fly_site.latest_flyability_score.scores.sort.each do |score| %>
-            <% dow = get_dow(score[0]) %>
-            <% link_class = "col-sm-1 btn #{get_score_css_class(score[1])} ml-1" %>
-            <div class="<%= link_class %>" 
-              id=<%= "#{fly_site.slug}_#{dow}" %>>
-              <a class="text-light align-middle text-center" href="#" role="button"><%= dow %></a>
-            </div>
-          <% end %>
+          <% if fly_site.latest_flyability_score %>
+            <% fly_site.latest_flyability_score.scores.sort.each do |score| %>
+              <% dow = get_dow(score[0]) %>
+              <% link_class = "col-sm-1 btn #{get_score_css_class(score[1])} ml-1" %>
+              <div class="<%= link_class %>" 
+                id=<%= "#{fly_site.slug}_#{dow}" %>>
+                <a class="text-light align-middle text-center" href="#" role="button"><%= dow %></a>
+              </div>
+            <% end %>
+          <% end %> 
           <div class="collapse col-sm" id=<%= "collapse_#{fly_site.slug}" %>>
             <div class="card card-body">
-              NWS forecast diagram
+              <div class="nws_image">
+                <img alt="#" src=<%= "#{nws_plotter_url(fly_site)}" %> width="640"  />
+              </div>
             </div>
           </div>
         </div>
