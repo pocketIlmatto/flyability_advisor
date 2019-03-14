@@ -76,4 +76,11 @@ function successUserLocationAsk(position) {
 $(document).ready(function() {
   geocoder = new google.maps.Geocoder();
   updateSearchBar({lat: parseFloat(localStorage.latitude), lng: parseFloat(localStorage.longitude)});
+  if(localStorage.getItem('newStuffModalState') != 'shown'){
+   
+    $('#newStuffModal').modal('show');
+    localStorage.setItem('newStuffModalState','shown')
+  }
+
+  $('#searchBarRow').hide() // Don't show search bar for now
 }); //
