@@ -13,7 +13,7 @@ class HomeController < ApplicationController
       @lat = user_location.lat
       @lng = user_location.lng
     end
-    @fly_sites = FlySite.within(40, 
+    @fly_sites = FlySite.within(4000, 
       origin: [@lat, @lng]).includes(:latest_flyability_score)
 
     @fly_sites = @fly_sites.page(params[:page] ? params[:page][:number] : 1)
