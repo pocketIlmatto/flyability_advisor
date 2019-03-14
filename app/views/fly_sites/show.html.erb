@@ -7,20 +7,77 @@
 <% end %>
 
 <p id="notice"><%= notice %></p>
+
 <div class="container mt-2">
-  <div class="row">
-    <div class="col-sm mr-4" id="map"></div>
-    <div class="col-sm" id="site-details_"<%= @fly_site.slug %>>
-      <span>Name: <%= @fly_site.name %></span><br/>
-      <span>Sunrise hour (avg): <%= @fly_site.hourstart %></span><br/>
-      <span>Sunset hour (avg): <%= @fly_site.hourend %></span><br/>
-      <span>Min speed (ideal): <%= @fly_site.speedmin_ideal %> mph</span><br/>
-      <span>Max speed (ideal): <%= @fly_site.speedmax_ideal %> mph</span><br/>
-      <span>Min speed (edge): <%= @fly_site.speedmin_edge %> mph</span><br/>
-      <span>Max speed (edge): <%= @fly_site.speedmax_edge %> mph</span><br/>
-      <span>Wind direction(s) (ideal): <%= @fly_site.dir_ideal %></span><br/>
-      <span>Wind direction(s) (edge): <%= @fly_site.dir_edge %></span><br/>
-      <%= link_to "Flying sites list", root_path %>
+  <div class="row p-2"><h1><%= @fly_site.name %></h1></div>
+  <div class="row p-2">
+    <ul class="nav nav-tabs">
+      <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#details-tab">Details</a></li>
+      <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#forecast-tab">Forecast</a></li>
+      <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Current</a></li>
+      <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Flight tracks</a></li>
+    </ul>
+  </div>
+  
+  <div class="row p-2">
+    <div class="tab-content">
+      <div id="details-tab" class="tab-pane active container mt-2">
+        <div class="row">
+          <div class="col-sm mr-2" id="map"></div>
+          <div class="col-sm" id="site-details_"<%= @fly_site.slug %>>
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <th scope="row">Sunrise hour (avg):</th>
+                  <td><%= @fly_site.hourstart %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Sunset hour (avg):</th>
+                  <td><%= @fly_site.hourend %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Sunset hour (avg):</th>
+                  <td><%= @fly_site.hourend %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Min speed (ideal):</th> 
+                  <td><%= @fly_site.speedmin_ideal %> mph</td>
+                </tr>
+                <tr>
+                  <th scope="row">Max speed (ideal):</th> 
+                  <td><%= @fly_site.speedmax_ideal %> mph</td>
+                </tr>
+                <tr>
+                  <th scope="row">Min speed (edge):</th> 
+                  <td><%= @fly_site.speedmin_edge %> mph</td>
+                </tr>
+                <tr>
+                  <th scope="row">Max speed (edge):</th> 
+                  <td><%= @fly_site.speedmax_edge %> mph</td>
+                </tr>
+                <tr>
+                  <th scope="row">Wind direction(s) (ideal):</th>
+                  <td><%= @fly_site.dir_ideal %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Wind direction(s) (edge):</th> 
+                  <td><%= @fly_site.dir_edge %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="forecast-tab" class="tab-pane fade container mt-2">
+        <div class="nws_image">
+          <img alt="#" src=<%= "#{nws_plotter_url(@fly_site)}" %> width="640"  />
+        </div>
+      </div>
     </div>
   </div>
+  <div class="row p-2"><%= link_to "Go back to home", root_path %></div>
+
 </div>
+
+
+  
