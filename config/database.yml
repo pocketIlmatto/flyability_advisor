@@ -7,17 +7,17 @@ default: &default
 
 development:
   <<: *default
-  database: skycrackcast_development
+  database: flyability_advisor_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: skycrackcast_test
+  database: flyability_advisor_test
 
 production:
   <<: *default
-  database: skycrackcast_production
-  username: skycrackcast
+  database: flyability_advisor_production
+  username: flyability_advisor
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
