@@ -28,12 +28,12 @@
             <table class="table table-striped">
               <tbody>
                 <tr>
-                  <th scope="row">Sunrise hour (avg):</th>
-                  <td><%= @fly_site.hourstart %></td>
+                  <th scope="row">Flying window start time:</th>
+                  <td><%= "#{@fly_site.hourstart}:00" %></td>
                 </tr>
                 <tr>
-                  <th scope="row">Sunset hour (avg):</th>
-                  <td><%= @fly_site.hourend %></td>
+                  <th scope="row">Flying window end time:</th>
+                  <td><%= "#{@fly_site.hourend}:00" %></td>
                 </tr>
                 <tr>
                   <th scope="row">Min speed (ideal):</th> 
@@ -66,7 +66,7 @@
       </div>
       <div id="forecast-tab" class="tab-pane fade container mt-2">
         <div class="nws_image">
-          <img alt="#" src=<%= "#{nws_plotter_url(@fly_site)}" %> width="640"  />
+          <img alt="#" src=<%= "#{nws_plotter_url(@fly_site, true)}" %> width="640"  />
         </div>
       </div>
     </div>
