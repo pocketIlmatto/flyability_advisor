@@ -3,16 +3,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'active_model_serializers'
-gem 'bootstrap'
-gem 'geokit-rails'
-gem 'jquery-rails'
-gem 'pg'
-gem 'puma', '~> 3.11'
-gem 'rack-cors', :require => 'rack/cors'
+gem 'active_model_serializers', '~> 0.10.8'
+gem 'bootstrap', '~> 4.3.1'
+gem 'geokit-rails', '~> 2.3.1'
+gem 'jquery-rails', '~> 4.3.3'
+gem 'pg', '~> 1.0.0'
+gem 'puma', '~> 3.12.0'
+gem 'rack-cors', '~> 1.0.2', :require => 'rack/cors'
 gem 'rails', '~> 5.2.2'
 gem 'rest-client', '~> 2.0.2'
-gem "will_paginate"
+gem 'will_paginate', '~> 3.1.6'
+gem 'uglifier'
 
 group :development, :test do
   gem 'pry', '0.11.3'
