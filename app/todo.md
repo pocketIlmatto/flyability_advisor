@@ -1,8 +1,0 @@
-- Convert site list to a combination of an Ajax call to FlyingSitesController + templates
-- Make search-bar change the map and what shows up in the site list
-- Markers on map should be based on the displayed site list
-- Pagination for the site list - ajax driven
-- Add pilot rating to filters
-- Flying site CRUD (lock w/ simple pw in the form for now)
-- Add precipitation to the flyability equation
-- Figure out how to add cloudbase and other data to the flyability equation
