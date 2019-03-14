@@ -26,7 +26,7 @@ function updateMap(location) {
   map.setCenter(location);
 }
 
-function codeLatLng(location) {
+function updateSearchBar(location) {
   if (!location.lat) {
     return;
   }
@@ -57,11 +57,7 @@ function codeLatLng(location) {
 function askOnceForLocation() {
   if (!localStorage.latitude) {
     navigator.geolocation.getCurrentPosition(function(p){
-      localStorage.setItem("latitude", p.coords.latitude);
-      localStorage.setItem("longitude", p.coords.longitude);
-      userLocation = {lat: parseFloat(localStorage.latitude), lng: parseFloat(localStorage.longitude)}
-      updateMap(userLocation);
-      codeLatLng(userLocation);
+      successUserLocationAsk(p)
     }, function(e){
         console.log(e)
       }
@@ -69,7 +65,15 @@ function askOnceForLocation() {
   }
 }
 
+function successUserLocationAsk(position) {
+  localStorage.setItem("latitude", p.coords.latitude);
+  localStorage.setItem("longitude", p.coords.longitude);
+  userLocation = {lat: parseFloat(localStorage.latitude), lng: parseFloat(localStorage.longitude)}
+  updateMap(userLocation);
+  updateSearchBar(userLocation); 
+}
+
 $(document).ready(function() {
   geocoder = new google.maps.Geocoder();
-  codeLatLng({lat: parseFloat(localStorage.latitude), lng: parseFloat(localStorage.longitude)});
+  updateSearchBar({lat: parseFloat(localStorage.latitude), lng: parseFloat(localStorage.longitude)});
 }); //

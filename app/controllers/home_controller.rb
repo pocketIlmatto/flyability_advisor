@@ -12,11 +12,9 @@ class HomeController < ApplicationController
     if user_location.success
       @lat = user_location.lat
       @lng = user_location.lng
-      @fly_sites = FlySite.within(40, 
-        origin: [user_location.lat, user_location.lng])
-    else
-      @fly_sites = FlySite.all.includes(:latest_flyability_score)
     end
+    @fly_sites = FlySite.within(40, 
+      origin: [@lat, @lng]).includes(:latest_flyability_score)
 
     @fly_sites = @fly_sites.page(params[:page] ? params[:page][:number] : 1)
   end
