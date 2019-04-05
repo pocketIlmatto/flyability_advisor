@@ -3,7 +3,7 @@ module HomeHelper
 
   def get_dow(wkday)
     wkday = (wkday.to_i - 7).to_s if wkday.to_i >= 7
-    DOW_MAP[wkday]
+    DOW_MAP[wkday.to_s]
   end
 
   def get_score_css_class(score)
