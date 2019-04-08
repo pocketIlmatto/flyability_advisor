@@ -45,16 +45,19 @@
       </div>
     </div>
   </div>
-  <div class="row border rounded p-2" style="min-height: 400px;">
-    <div class="col-sm mr-4" id="map"></div>
-    <div class="col-sm" id="site-list">
-      
+  <div class="row border p-2">
+    <div class="col-12" id="map"></div>
+  </div>
+  <div class="row border">
+    <div class="col-12" id="site-list">
       <% @fly_sites.each do |fly_site| %>
-        <div class="row mb-2">
-          <div class="col-sm-3 bg-primary rounded">
-            <%= link_to fly_site.name, fly_site, class: "btn-primary" %>
+        <div class="row border-bottom">
+          <div class="col-3 pl-2 pr-2 pb-1 pt-1">
+            <%= link_to fly_site.name, fly_site %>
           </div>
-          <%= render partial: "shared/dow_row", locals: { fly_site: fly_site } %>
+          <div class="col-9 pl-2 pr-2 pb-1 pt-1">
+            <%= render partial: "shared/dow_row", locals: { fly_site: fly_site } %>
+          </div>
         </div>
       <% end %>
     </div>

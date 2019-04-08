@@ -9,13 +9,13 @@ module HomeHelper
   def get_score_css_class(score)
     case score
     when "hell-yes"
-      "btn-success"
+      "bg-success"
     when "go"
-      "btn-info"
+      "bg-info"
     when "maybe"
-      "btn-warning"
+      "bg-warning"
     else
-      "btn-secondary"
+      "bg-secondary"
     end
   end
 end
