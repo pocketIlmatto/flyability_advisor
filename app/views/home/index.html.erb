@@ -54,16 +54,7 @@
           <div class="col-sm-3 bg-primary rounded">
             <%= link_to fly_site.name, fly_site, class: "btn-primary" %>
           </div>
-          <% if fly_site.latest_flyability_score %>
-            <% fly_site.latest_flyability_score.scores.map{|k,_| k.to_i}.sort.each do |score| %>
-              <% dow = get_dow(score) %>
-              <% link_class = "col-sm-1 btn #{get_score_css_class(fly_site.latest_flyability_score.scores[score.to_s])} ml-1" %>
-              <div class="<%= link_class %>" 
-                id=<%= "#{fly_site.slug}_#{dow}" %>>
-                <a class="text-light align-middle text-center" href="#" role="button"><%= dow %></a>
-              </div>
-            <% end %>
-          <% end %> 
+          <%= render partial: "shared/dow_row", locals: { fly_site: fly_site } %>
         </div>
       <% end %>
     </div>
