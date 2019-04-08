@@ -51,14 +51,6 @@
       
       <% @fly_sites.each do |fly_site| %>
         <div class="row mb-2">
-          <div class="col-sm-1">
-            <a class="btn" data-toggle="collapse" 
-              href=<%= '#'+"collapse_#{fly_site.slug}" %> role="button"
-              aria-expanded="false" 
-              aria-controls=<%= "collapse_#{fly_site.slug}" %> >
-              <i class="fas fa-plus"></i>
-            </a>
-          </div>
           <div class="col-sm-3 bg-primary rounded">
             <%= link_to fly_site.name, fly_site, class: "btn-primary" %>
           </div>
@@ -72,13 +64,6 @@
               </div>
             <% end %>
           <% end %> 
-          <div class="collapse col-sm" id=<%= "collapse_#{fly_site.slug}" %>>
-            <div class="card card-body">
-              <div class="nws_image">
-                <img alt="#" src=<%= "#{nws_plotter_url(fly_site)}" %> width="600" />
-              </div>
-            </div>
-          </div>
         </div>
       <% end %>
     </div>
