@@ -1,9 +1,10 @@
 var map;
-var marker;
+var userMarker;
+var markers;
 var geocoder;
 var defaultLocation = {lat: 37.804829, lng: -122.272476};
 
-function initMap(lat, lng, localStorageShouldOverride = false) {
+function initMap(lat, lng, flying_sites = [], localStorageShouldOverride = false) {
   var zoom = 8;
 
   userLocation = new google.maps.LatLng(lat, lng)
@@ -14,10 +15,62 @@ function initMap(lat, lng, localStorageShouldOverride = false) {
     } 
   }
 
-  map = new google.maps.Map(
+  var map = new google.maps.Map(
     document.getElementById('map'), {zoom: zoom, center: userLocation});
   
-  marker = new google.maps.Marker({position: userLocation, map: map});
+  userMarker = new google.maps.Marker({position: userLocation, map: map});
+  markers = [];
+  
+  setMarkers(map, flying_sites);
+}
+
+function setMarkers(map, flying_sites) {
+  var image = {
+    url: marker_icon,
+    scaledSize: new google.maps.Size(15, 20), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+  };
+
+  for (var i = 0; i < flying_sites.length; i++) {
+    var flying_site = flying_sites[i];
+    
+    var contentString = `<div id="content-${flying_site[2]}">`+
+      `<h4>${flying_site[2]}</h4>`+
+      '</div>';
+    var locationInfowindow = new google.maps.InfoWindow({
+      content: contentString,
+    });
+
+    var marker = new google.maps.Marker({
+      position: {lat: parseFloat(flying_site[0]), lng: parseFloat(flying_site[1])},
+      map: map,
+      title: flying_site[2],
+      infowindow: locationInfowindow,
+      icon: image
+    });
+
+    markers.push(marker);
+
+    google.maps.event.addListener(marker, 'click', function() {
+      hideAllInfoWindows(map);
+      this.infowindow.open(map, this);
+    });
+  }
+
+  var bounds = new google.maps.LatLngBounds();
+  for (var i = 0; i < markers.length; i++) {
+   bounds.extend(markers[i].getPosition());
+  }
+  bounds.extend(userMarker.getPosition());
+
+  map.fitBounds(bounds);
+}
+
+function hideAllInfoWindows(map) {
+   markers.forEach(function(marker) {
+     marker.infowindow.close(map, marker);
+  }); 
 }
 
 function updateMap(location) {

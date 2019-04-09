@@ -1,7 +1,8 @@
 <% provide :head_tags do %>
     <script>
+    var marker_icon = '<%= image_url('parachute.png') %>';
     document.addEventListener("DOMContentLoaded", function(){
-        initMap(<%= @lat %>, <%= @lng %>, true)
+        initMap(<%= @lat %>, <%= @lng %>, JSON.parse('<%= raw(escape_javascript(@fly_sites_gmaps_json)) %>'), true)
     });
     </script>
 <% end %>
