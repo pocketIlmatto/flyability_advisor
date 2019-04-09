@@ -62,8 +62,7 @@ function setMarkers(map, flying_sites) {
   for (var i = 0; i < markers.length; i++) {
    bounds.extend(markers[i].getPosition());
   }
-  bounds.extend(userMarker.getPosition());
-
+  
   map.fitBounds(bounds);
 }
 
