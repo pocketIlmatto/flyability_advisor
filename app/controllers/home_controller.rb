@@ -16,14 +16,14 @@ class HomeController < ApplicationController
     
     # Get the sites within range, and sort the ids
     bounds = Geokit::Bounds.from_point_and_radius([@lat, @lng], 150)
-    fly_site_ids = FlySite.in_bounds(bounds).sort_by{|f| f.distance_to([@lat, @lng])}.pluck(:id)
+    fly_site_ids = FlySite.in_bounds(bounds).sort_by{|f| f.distance_to([@lat, @lng])}.pluck(:id).uniq
  
     # @fly_sites needs to be ActiveRecord::Relation for pagination to work correctly
     @fly_sites = FlySite.for_ids_with_order(fly_site_ids).includes([:latest_flyability_score])
-
+    
     @fly_sites = @fly_sites.page(params[:page] ? params[:page] : 1)
 
-    @fly_sites_gmaps_json = @fly_sites.pluck(:lat, :lng, :name, :slug).to_json
+    @fly_sites_gmaps_json = @fly_sites.map{|f| [f.lat, f.lng, f.name, f.slug]}.to_json
     @fly_sites
   end
 
