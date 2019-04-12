@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 gem 'active_model_serializers', '~> 0.10.8'
 gem 'bootstrap', '~> 4.3.1'
+gem 'devise', '~> 4.6.2'
 gem 'geokit-rails', '~> 2.3.1'
 gem 'jquery-rails', '~> 4.3.3'
 gem 'pg', '~> 1.0.0'
