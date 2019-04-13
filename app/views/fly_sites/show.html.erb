@@ -6,79 +6,71 @@
     </script>
 <% end %>
 
-<p id="notice"><%= notice %></p>
+<div class="row p-2"><h2><%= @fly_site.name %></h2></div>
+<div class="row p-2">
+  <ul class="nav nav-tabs nav-fill site-nav-tab">
+    <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#details-tab">Details</a></li>
+    <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#forecast-tab">Forecast</a></li>
+    <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Current</a></li>
+    <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Flight tracks</a></li>
+  </ul>
+</div>
 
-<div class="container">
-  <div class="row p-2"><h2><%= @fly_site.name %></h2></div>
-  <div class="row p-2">
-    <ul class="nav nav-tabs nav-fill site-nav-tab">
-      <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#details-tab">Details</a></li>
-      <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#forecast-tab">Forecast</a></li>
-      <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Current</a></li>
-      <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Flight tracks</a></li>
-    </ul>
-  </div>
-  
-  <div class="row p-2">
-    <div class="tab-content">
-      <div id="details-tab" class="tab-pane active container mt-2">
-        <div class="row">
-          <div class="col-sm mr-2" id="map"></div>
-          <div class="col-sm" id="site-details_"<%= @fly_site.slug %>>
-            <table class="table table-striped">
-              <tbody>
-                <tr>
-                  <th scope="row">Flying window start time:</th>
-                  <td><%= "#{@fly_site.hourstart}:00" %></td>
-                </tr>
-                <tr>
-                  <th scope="row">Flying window end time:</th>
-                  <td><%= "#{@fly_site.hourend}:00" %></td>
-                </tr>
-                <tr>
-                  <th scope="row">Min speed (ideal):</th> 
-                  <td><%= @fly_site.speedmin_ideal %> mph</td>
-                </tr>
-                <tr>
-                  <th scope="row">Max speed (ideal):</th> 
-                  <td><%= @fly_site.speedmax_ideal %> mph</td>
-                </tr>
-                <tr>
-                  <th scope="row">Min speed (edge):</th> 
-                  <td><%= @fly_site.speedmin_edge %> mph</td>
-                </tr>
-                <tr>
-                  <th scope="row">Max speed (edge):</th> 
-                  <td><%= @fly_site.speedmax_edge %> mph</td>
-                </tr>
-                <tr>
-                  <th scope="row">Wind direction(s) (ideal):</th>
-                  <td><%= @fly_site.dir_ideal %></td>
-                </tr>
-                <tr>
-                  <th scope="row">Wind direction(s) (edge):</th> 
-                  <td><%= @fly_site.dir_edge %></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+<div class="row p-2">
+  <div class="tab-content">
+    <div id="details-tab" class="tab-pane active container mt-2">
+      <div class="row">
+        <div class="col-sm mr-2" id="map"></div>
+        <div class="col-sm" id="site-details_"<%= @fly_site.slug %>>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th scope="row">Flying window start time:</th>
+                <td><%= "#{@fly_site.hourstart}:00" %></td>
+              </tr>
+              <tr>
+                <th scope="row">Flying window end time:</th>
+                <td><%= "#{@fly_site.hourend}:00" %></td>
+              </tr>
+              <tr>
+                <th scope="row">Min speed (ideal):</th> 
+                <td><%= @fly_site.speedmin_ideal %> mph</td>
+              </tr>
+              <tr>
+                <th scope="row">Max speed (ideal):</th> 
+                <td><%= @fly_site.speedmax_ideal %> mph</td>
+              </tr>
+              <tr>
+                <th scope="row">Min speed (edge):</th> 
+                <td><%= @fly_site.speedmin_edge %> mph</td>
+              </tr>
+              <tr>
+                <th scope="row">Max speed (edge):</th> 
+                <td><%= @fly_site.speedmax_edge %> mph</td>
+              </tr>
+              <tr>
+                <th scope="row">Wind direction(s) (ideal):</th>
+                <td><%= @fly_site.dir_ideal %></td>
+              </tr>
+              <tr>
+                <th scope="row">Wind direction(s) (edge):</th> 
+                <td><%= @fly_site.dir_edge %></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div id="forecast-tab" class="tab-pane fade container mt-2">
-        <div class="row mb-2">
-          <%= render partial: "shared/dow_row", locals: { fly_site: @fly_site } %>
-        </div>
-        <div class="row mb-2">
-          <div class="nws_image">
-            <img alt="#" src=<%= "#{nws_plotter_url(@fly_site, true)}" %> width="640"  />
-          </div>
+    </div>
+    <div id="forecast-tab" class="tab-pane fade container mt-2">
+      <div class="row mb-2">
+        <%= render partial: "shared/dow_row", locals: { fly_site: @fly_site } %>
+      </div>
+      <div class="row mb-2">
+        <div class="nws_image">
+          <img alt="#" src=<%= "#{nws_plotter_url(@fly_site, true)}" %> width="640"  />
         </div>
       </div>
     </div>
   </div>
-  <div class="row p-2"><%= link_to "Back to full list", root_path %></div>
-
 </div>
-
-
-  
+<div class="row p-2"><%= link_to "Back to full list", root_path %></div>

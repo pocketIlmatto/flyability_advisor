@@ -15,6 +15,12 @@
   </head>       
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/welcome_modal' %>
+    
+    <div class="container mt-2 pl-2">
+      <%= render 'layouts/messages' %>
+      <%= render 'layouts/nav' %>
+      <%= yield %>
+    </div>
   </body>
 </html>
