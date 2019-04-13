@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_030045) do
+ActiveRecord::Schema.define(version: 2019_04_13_184504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_030045) do
     t.string "calculation_version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "score_details", default: {}
     t.index ["fly_site_id"], name: "index_flyability_scores_on_fly_site_id"
   end
 
