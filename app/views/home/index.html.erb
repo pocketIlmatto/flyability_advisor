@@ -25,7 +25,7 @@
   <div class="col-12" id="site-list">
     <% @fly_sites.each do |fly_site| %>
       <div class="row border-bottom">
-        <div class="favorite col-2 pl-1 pr-2 pb-1 pt-1">
+        <div class="favorite col-3 pl-2 pr-2 pb-1 pt-1">
           <% if user_signed_in? %>
             <%= link_to favorite_fly_site_path(fly_site), method: 'post', remote: true do %>
               <span id='fly_site_<%= fly_site.id %>_favorite'>
