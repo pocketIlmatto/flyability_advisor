@@ -11,6 +11,7 @@ class FlySite < ApplicationRecord
     where('fly_sites.id IN (?)', ids).order(order)
   } 
 
+  has_and_belongs_to_many :users, -> { distinct }
   has_many :flyability_scores
   has_one :latest_flyability_score, -> { order(updated_at: :desc) }, class_name: "FlyabilityScore"
 
