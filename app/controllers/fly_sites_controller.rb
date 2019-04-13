@@ -1,7 +1,7 @@
 include Geokit::Geocoders
 
 class FlySitesController < ApplicationController
-  before_action :set_fly_site, only: [:show, :edit, :update, :destroy]
+  before_action :set_fly_site, only: [:show, :edit, :update, :destroy, :favorite]
 
   # GET /get_fly_sites
   def get_fly_sites
@@ -65,6 +65,32 @@ class FlySitesController < ApplicationController
   def destroy
     @fly_site.destroy
     redirect_to fly_sites_url, notice: 'Flying site was successfully destroyed.'
+  end
+
+  def favorite
+    if user_signed_in?
+      if current_user.favorited?(@fly_site)
+        @fly_site.user_ids = @fly_site.user_ids - [current_user.id]
+      else
+        @fly_site.users << current_user
+      end
+      @fly_site.save!
+      current_user.reload
+    else
+      @fly_site.errors.add(base: :must_be_logged_in_to_favorite)
+    end
+    
+    respond_to do |format|
+      format.html do
+        if @fly_site.valid?
+          flash[:notice] = "Favorite updated"
+        else
+          flash[:error] = "#{@fly_site.errors.full_messages}"
+        end
+        redirect_to :back 
+      end
+      format.js
+    end
   end
 
   private

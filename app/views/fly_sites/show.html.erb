@@ -6,7 +6,24 @@
     </script>
 <% end %>
 
-<div class="row p-2"><h2><%= @fly_site.name %></h2></div>
+<div class="row p-2">
+  <div class="favorite">
+    <h2>
+      <% if user_signed_in? %>
+        <%= link_to favorite_fly_site_path(@fly_site), method: 'post', remote: true do %>
+          <span id='fly_site_<%= @fly_site.id %>_favorite'>
+            <% if current_user.favorited?(@fly_site) %>
+              <i class="fas fa-heart text-warning"></i> 
+            <% else %>
+              <i class="far fa-heart text-secondary"></i>
+            <% end %>
+          </span>
+        <% end %>
+        <%= @fly_site.name %>
+      <% end %>
+    </h2>
+  </div>
+</div>
 <div class="row p-2">
   <ul class="nav nav-tabs nav-fill site-nav-tab">
     <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#details-tab">Details</a></li>

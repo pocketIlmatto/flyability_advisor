@@ -1,0 +1,7 @@
+<% if @fly_site.valid? && current_user.favorited?(@fly_site) %>
+  $('#fly_site_<%= @fly_site.id %>_favorite').html('<i class="fas fa-heart text-warning"></i>');
+<% elsif @fly_site.valid? %>
+  $('#fly_site_<%= @fly_site.id %>_favorite').html('<i class="far fa-heart text-secondary"></i>');
+<% else %>
+  alert("Error!");
+<% end %>

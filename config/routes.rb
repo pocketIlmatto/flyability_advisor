@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     sign_up: '/404.html',
     sign_in: '/404.html'
   }
-  resources :fly_sites, only: [:create, :edit, :get_fly_sites, :new, :show, :update]
+  resources :fly_sites, only: [:create, :edit, :get_fly_sites, :new, :show, :update] do
+    member do
+      post :favorite
+    end
+  end
   get '*path' => redirect('/404.html')
 end

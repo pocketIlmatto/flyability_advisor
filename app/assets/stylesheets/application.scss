@@ -1,4 +1,5 @@
 @import 'bootstrap';
+@import 'font-awesome';
 
 #map {
   min-width: 350px;
@@ -104,4 +105,8 @@
 
 .nav-item {
   text-align: right;
+}
+
+.favorite a {
+  text-decoration: none;
 }

@@ -23,4 +23,8 @@ class User < ApplicationRecord
       user.image = auth.info.image
     end
   end
+
+  def favorited?(fly_site)
+    fly_site_ids.include?(fly_site.id)
+  end
 end

@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        fly_site:
+          attributes:
+            base:
+              must_be_logged_in_to_favorite: "You must be logged in to toggle favorite flying sites"
+
