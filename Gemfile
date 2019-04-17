@@ -19,8 +19,11 @@ gem 'will_paginate', '~> 3.1.6'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'factory_bot_rails', '4.10.0'
+  gem 'faker', '1.8.7'
   gem 'pry', '0.11.3'
   gem 'pry-byebug', '3.6.0'
+  gem 'rspec-rails', '3.7.2'
 end
 
 group :development do
