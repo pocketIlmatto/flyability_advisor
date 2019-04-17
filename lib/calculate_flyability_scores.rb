@@ -64,6 +64,7 @@ class CalculateFlyabilityScores
       end
 
       score_details[todaynum][time_hour] = {
+        icon: period_data["icon"],
         short_forecast: short_forecast,
         speed_min_act: speed_min_act,
         speed_max_act: speed_max_act,
