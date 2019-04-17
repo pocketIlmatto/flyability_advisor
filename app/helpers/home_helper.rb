@@ -1,5 +1,5 @@
 module HomeHelper
-  DOW_MAP = {"0" => "Su", "1" => "Mo", "2" => "Tu", "3" => "We", "4" => "Th", "5" => "Fr", "6" => "Sa"}
+  DOW_MAP = {"0" => "Su", "1" => "M", "2" => "Tu", "3" => "W", "4" => "Th", "5" => "F", "6" => "Sa"}
 
   def get_dow(wkday)
     wkday = (wkday.to_i - 7).to_s if wkday.to_i >= 7
