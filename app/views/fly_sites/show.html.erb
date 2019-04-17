@@ -1,5 +1,6 @@
 <% provide :head_tags do %>
     <script>
+    var marker_icon = '<%= image_url('parachute.png') %>';
     document.addEventListener("DOMContentLoaded", function(){
         initMap(<%= @lat %>, <%= @lng %>)
     });
