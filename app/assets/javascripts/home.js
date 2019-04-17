@@ -134,5 +134,5 @@ $(document).ready(function() {
     localStorage.setItem('newStuffModalState','shown')
   }
 
-  $('#searchBarRow').hide() // Don't show search bar for now
+
 }); //

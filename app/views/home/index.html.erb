@@ -1,26 +1,11 @@
 <% provide :head_tags do %>
     <script>
     var marker_icon = '<%= image_url('parachute.png') %>';
-    document.addEventListener("DOMContentLoaded", function(){
-        initMap(<%= @lat %>, <%= @lng %>, JSON.parse('<%= raw(escape_javascript(@fly_sites_gmaps_json)) %>'), true)
-    });
+    // document.addEventListener("DOMContentLoaded", function(){
+    //     initMap(<%= @lat %>, <%= @lng %>, JSON.parse('<%= raw(escape_javascript(@fly_sites_gmaps_json)) %>'), true)
+    // });
     </script>
 <% end %>
-<div class="row" id='searchBarRow'>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" id="search-bar" 
-      onclick="askOnceForLocation()" placeholder="Oakland, CA" 
-      aria-label="Search for flying sites" aria-describedby="button-addon2">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" 
-        id="button-addon2"><i class="fas fa-search-location"></i>
-      </button>
-    </div>
-  </div>
-</div>
-<div class="row border p-2">
-  <div class="col-12" id="map"></div>
-</div>
 <div class="row border">
   <div class="col-12" id="site-list">
     <% @fly_sites.each do |fly_site| %>
