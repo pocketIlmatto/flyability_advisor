@@ -18,4 +18,17 @@ module HomeHelper
       "bg-secondary"
     end
   end
+
+  def translate_score_details_for_display(score_details_dow)
+    display_details = {scores: [], hours: [], speeds: [], directions: [], icons: []}
+    score_details_dow.each_pair do |hour, score_details_dow_hour|
+      next if score_details_dow_hour["score"] == "not_in_flying_window"
+      display_details[:hours] << hour
+      display_details[:scores] << score_details_dow_hour["score"]
+      display_details[:speeds] << score_details_dow_hour["speed_max_act"]
+      display_details[:directions] << score_details_dow_hour["wind_direction"]
+      display_details[:icons] << score_details_dow_hour["icon"]
+    end
+    display_details
+  end
 end

@@ -20,6 +20,19 @@
   border-radius: 2px;
 }
 
+.dow_detailed_score_info {
+  background-color: $secondary;
+}
+.dow_detailed_score_ideal {
+  background-color: $green;
+}
+.dow_detailed_score_edge {
+  background-color: $yellow;
+}
+.dow_detailed_score_no {
+  background-color: $danger;
+}
+
 .custom_pagination {
   background: white;
   cursor: default;
