@@ -9,47 +9,6 @@
       </button>
       <% collapse_score_dow_nums << score_dow_num %>
     <% end %>
-    
-    <div class="accordion-group">
-      <% collapse_score_dow_nums.each do |score_dow_num| %>
-        <% dow = get_dow(score_dow_num) %>
-        <% display_details = translate_score_details_for_display(fly_site.latest_flyability_score.score_details[score_dow_num.to_s]) %>
-        <div class="collapse" id=<%= "collapse_#{fly_site.slug}_#{dow}" %> data-parent=<%= "#collapse_group_#{fly_site.slug}" %>>
-          <table class="table-sm rounded">
-            <!-- Hours -->
-            <tr>
-              <td class="dow_detailed_score_info">Time:</td>
-              <% display_details[:hours].each_with_index do |hour, i| %>
-                <td class="dow_detailed_score_<%= display_details[:scores][i] %>"><%= hour %>:00</td>
-              <% end %>
-            </tr>
-
-            <!-- Icons -->
-            <tr>
-              <td class="dow_detailed_score_info"></td>
-              <% display_details[:icons].each_with_index do |icon, i| %>
-                <td class="dow_detailed_score_<%= display_details[:scores][i] %>"><img src="<%= icon %>"/></td>
-              <% end %>
-            </tr>
-
-            <!-- Speeds -->
-            <tr>
-              <td class="dow_detailed_score_info">mph:</td>
-              <% display_details[:speeds].each_with_index do |speed, i| %>
-                <td class="dow_detailed_score_<%= display_details[:scores][i] %>"><%= speed %></td>
-              <% end %>
-            </tr>
-
-            <!-- Directions -->
-            <tr>
-              <td class="dow_detailed_score_info"></td>
-              <% display_details[:directions].each_with_index do |direction, i| %>
-                <td class="dow_detailed_score_<%= display_details[:scores][i] %>"><%= direction %></td>
-              <% end %>
-            </tr>
-          </table>
-        </div>
-      <% end %>
-    </div>
+    <%= render partial: "shared/expanded_score_forecast", locals: { fly_site: fly_site, collapse_score_dow_nums: collapse_score_dow_nums } %>
   </div>
 <% end %> 
