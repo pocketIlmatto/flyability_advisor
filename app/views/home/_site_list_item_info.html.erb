@@ -1,0 +1,14 @@
+<div class="favorite">
+  <% if user_signed_in? %>
+    <%= link_to favorite_fly_site_path(fly_site), method: 'post', remote: true do %>
+      <span id='fly_site_<%= fly_site.id %>_favorite'>
+        <% if current_user.favorited?(fly_site) %>
+          <i class="fas fa-heart text-warning"></i> 
+        <% else %>
+          <i class="far fa-heart text-secondary"></i>
+        <% end %>
+      </span>
+    <% end %>
+  <% end %>
+  <%= link_to fly_site.name, fly_site %>
+</div>

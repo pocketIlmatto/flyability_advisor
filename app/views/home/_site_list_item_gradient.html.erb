@@ -1,0 +1,9 @@
+<div class="row">
+  <% fly_site.latest_flyability_score.score_details.each_pair do |dow, score_detail| %>
+    <div class="col-1 pl-0 pr-0 pb-0 pt-0">
+      <canvas id=<%= "canvas_#{fly_site.slug}_#{dow}" %> width="100" height="25">
+        Sorry, your browser doesn't support the &lt;canvas&gt; element.
+      </canvas>
+    </div>
+  <% end %>
+</div>

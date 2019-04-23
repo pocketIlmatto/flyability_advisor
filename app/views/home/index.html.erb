@@ -3,41 +3,14 @@
     <%= render 'home/draw_score_gradients.js' %>
   </script>
 <% end %>
+
 <div class="fly-sites-data" data-fly-sites="<%= @fly_sites %>">
 </div>
-<div class="row border">
-  <div class="col-12" id="site-list">
-    <% @fly_sites.each do |fly_site| %>
-      <div class="row border-bottom">
-        <div class="favorite col-4 pl-2 pr-2 pb-1 pt-1">
-          <% if user_signed_in? %>
-            <%= link_to favorite_fly_site_path(fly_site), method: 'post', remote: true do %>
-              <span id='fly_site_<%= fly_site.id %>_favorite'>
-                <% if current_user.favorited?(fly_site) %>
-                  <i class="fas fa-heart text-warning"></i> 
-                <% else %>
-                  <i class="far fa-heart text-secondary"></i>
-                <% end %>
-              </span>
-            <% end %>
-          <% end %>
-          <%= link_to fly_site.name, fly_site %>
-        </div>
-        <div class="col-8 pl-2 pr-2 pb-1 pt-1">
-          <div class="row">
-            <% fly_site.latest_flyability_score.score_details.each_pair do |dow, score_detail| %>
-              <div class="col-1 pl-0 pr-0 pb-0 pt-0">
-                <canvas id=<%= "collapse_group_#{fly_site.slug}_#{dow}" %> width="100" height="25">
-                  Sorry, your browser doesn't support the &lt;canvas&gt; element.
-                </canvas>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+
+<div class="row border site-list">
+  <%= render partial: "home/site_list", locals: { fly_sites: @fly_sites } %>
 </div>
+
 <div class="row border p-2">
   <div class="custom_pagination">
     <%= will_paginate @fly_sites, :container => false %>

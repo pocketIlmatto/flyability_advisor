@@ -1,0 +1,5 @@
+<div class="col-12">
+  <% fly_sites.each do |fly_site| %>
+    <%= render partial: "home/site_list_item", locals: { fly_site: fly_site } %>
+  <% end %>
+</div>
