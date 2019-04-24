@@ -1,5 +1,5 @@
 var ScoreGradient = {
-  draw : function(elementId, scores) {
+  draw : function(elementId, collapseSectionId, scores) {
     var c = document.getElementById(elementId);
     
     if (c) {
@@ -26,10 +26,13 @@ var ScoreGradient = {
       ctx.fillStyle = grd;
       ctx.fillRect(0, 0, c.width, c.height);
 
-      $(`#${elementId}`).click(function(){
-        $(`#${elementId}`).toggleClass("border-left border-right");
+      $(`#${collapseSectionId}`).on("show.bs.collapse", function(){
+        $(`#${elementId}`).addClass("border-left border-right");
       });
 
+      $(`#${collapseSectionId}`).on("hide.bs.collapse", function(){
+        $(`#${elementId}`).removeClass("border-left border-right");
+      });
     }
   },
 

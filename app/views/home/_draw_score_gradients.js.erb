@@ -1,7 +1,9 @@
 $(function() {
   <% @fly_sites.each do |fly_site| %>
     <% fly_site.latest_flyability_score.score_details.each_pair do |dow, score_detail| %>
-      ScoreGradient.draw("<%= "canvas_#{fly_site.slug}_#{dow}" %>", 
+      <% dow_collapse = get_dow(dow) %>
+      ScoreGradient.draw("<%= "canvas_#{fly_site.slug}_#{dow}" %>",
+        "<%= "collapse_#{fly_site.slug}_#{dow_collapse}" %>",
         JSON.parse('<%= raw(escape_javascript(score_detail.to_json)) %>'));
     <% end %>
   <% end %>
