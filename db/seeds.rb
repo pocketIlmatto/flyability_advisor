@@ -1,4 +1,4 @@
-FlySite.create(name: 'big_sur'.humanize,
+FlySite.create(name: 'big_sur'.split('_').map(&:capitalize).join(' '),
   slug: 'big_sur',
   lat: 35.971,
   lng: -121.453,
@@ -11,7 +11,7 @@ FlySite.create(name: 'big_sur'.humanize,
   dir_ideal: ['SW', 'WSW', 'W'],
   dir_edge: ['SSW', 'SW', 'WSW', 'W', 'WNW'])
 
-FlySite.create(name: 'berkeley'.humanize,
+FlySite.create(name: 'berkeley'.split('_').map(&:capitalize).join(' '),
   slug: 'berkeley',
   lat: 37.871,
   lng: -122.319,
@@ -24,7 +24,7 @@ FlySite.create(name: 'berkeley'.humanize,
   dir_ideal: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'],
   dir_edge: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'])
 
-FlySite.create(name: 'blue_rock'.humanize,
+FlySite.create(name: 'blue_rock'.split('_').map(&:capitalize).join(' '),
   slug: 'blue_rock',
   lat: 38.140,
   lng: -122.217,
@@ -37,7 +37,7 @@ FlySite.create(name: 'blue_rock'.humanize,
   dir_ideal: ['WSW', 'W', 'WNW'],
   dir_edge: ['SW', 'WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'channing'.humanize,
+FlySite.create(name: 'channing'.split('_').map(&:capitalize).join(' '),
   slug: 'channing',
   lat: 38.098,
   lng: -122.180,
@@ -50,7 +50,7 @@ FlySite.create(name: 'channing'.humanize,
   dir_ideal: ['WSW', 'W', 'WNW'],
   dir_edge: ['SW', 'WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'channing_east'.humanize,
+FlySite.create(name: 'channing_east'.split('_').map(&:capitalize).join(' '),
   slug: 'channing_east',
   lat: 38.099,
   lng: -122.180,
@@ -63,7 +63,7 @@ FlySite.create(name: 'channing_east'.humanize,
   dir_ideal: ['ENE', 'E', 'ESE'],
   dir_edge: ['NE', 'ENE', 'E', 'ESE', 'SE'])
 
-FlySite.create(name: 'coloma'.humanize,
+FlySite.create(name: 'coloma'.split('_').map(&:capitalize).join(' '),
   slug: 'coloma',
   lat: 38.822,
   lng: -120.889,
@@ -76,7 +76,7 @@ FlySite.create(name: 'coloma'.humanize,
   dir_ideal: ['WSW', 'W', 'WNW'],
   dir_edge: ['SW', 'WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'davis'.humanize,
+FlySite.create(name: 'davis'.split('_').map(&:capitalize).join(' '),
   slug: 'davis',
   lat: 38.570,
   lng: -121.820,
@@ -89,7 +89,7 @@ FlySite.create(name: 'davis'.humanize,
   dir_ideal: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'],
   dir_edge: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'])
 
-FlySite.create(name: 'diablo_juniper'.humanize,
+FlySite.create(name: 'diablo_juniper'.split('_').map(&:capitalize).join(' '),
   slug: 'diablo_juniper',
   lat: 37.881,
   lng: -121.914,
@@ -102,7 +102,7 @@ FlySite.create(name: 'diablo_juniper'.humanize,
   dir_ideal: ['SW', 'WSW'],
   dir_edge: ['SW', 'WSW', 'W'])
 
-FlySite.create(name: 'diablo_towers'.humanize,
+FlySite.create(name: 'diablo_towers'.split('_').map(&:capitalize).join(' '),
   slug: 'diablo_towers',
   lat: 37.881,
   lng: -121.914,
@@ -115,7 +115,7 @@ FlySite.create(name: 'diablo_towers'.humanize,
   dir_ideal: ['WNW', 'NW'],
   dir_edge: ['W', 'WNW', 'W', 'NW', 'NNW'])
 
-FlySite.create(name: 'day_dreams'.humanize,
+FlySite.create(name: 'day_dreams'.split('_').map(&:capitalize).join(' '),
   slug: 'day_dreams',
   lat: 39.242,
   lng: -120.008,
@@ -128,7 +128,7 @@ FlySite.create(name: 'day_dreams'.humanize,
   dir_ideal: ['SSW', 'SW', 'WSW'],
   dir_edge: ['S', 'SSW', 'SW', 'WSW', 'W'])
 
-FlySite.create(name: 'drakes'.humanize,
+FlySite.create(name: 'drakes'.split('_').map(&:capitalize).join(' '),
   slug: 'drakes',
   lat: 38.026,
   lng: -122.965,
@@ -141,7 +141,7 @@ FlySite.create(name: 'drakes'.humanize,
   dir_ideal: ['SE', 'SSE'],
   dir_edge: ['ESE', 'SE', 'SSE', 'S'])
 
-FlySite.create(name: 'dunlap'.humanize,
+FlySite.create(name: 'dunlap'.split('_').map(&:capitalize).join(' '),
   slug: 'dunlap',
   lat: 36.765,
   lng: -119.098,
@@ -154,7 +154,7 @@ FlySite.create(name: 'dunlap'.humanize,
   dir_ideal: ['WSW', 'W', 'WNW'],
   dir_edge: ['SW', 'WSW', 'W', 'WNW', 'NW'])
   
-FlySite.create(name: 'duck_hill'.humanize,
+FlySite.create(name: 'duck_hill'.split('_').map(&:capitalize).join(' '),
   slug: 'duck_hill',
   lat: 39.241,
   lng: -119.741,
@@ -167,7 +167,7 @@ FlySite.create(name: 'duck_hill'.humanize,
   dir_ideal: ['SW','WSW', 'W', 'WNW', 'NW'],
   dir_edge: ['WSW', 'W', 'WNW', 'NW', 'NNW'])
 
-FlySite.create(name: 'ed_levin'.humanize,
+FlySite.create(name: 'ed_levin'.split('_').map(&:capitalize).join(' '),
   slug: 'ed_levin',
   lat: 37.475,
   lng: -121.861,
@@ -180,8 +180,8 @@ FlySite.create(name: 'ed_levin'.humanize,
   dir_ideal: ['SSE', 'S', 'SSW', 'SW', 'WSW', 'W'],
   dir_edge: ['SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'elk'.humanize,
-  slug: 'elk',
+FlySite.create(name: 'elk_mountain'.split('_').map(&:capitalize).join(' '),
+  slug: 'elk_mountain',
   lat: 39.277,
   lng: -122.941,
   hourstart: 10,
@@ -193,7 +193,7 @@ FlySite.create(name: 'elk'.humanize,
   dir_ideal: ['ESE','SE','SSE','NW', 'WNW'],
   dir_edge: ['ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WNW', 'NW'])
 
-FlySite.create(name: 'goat'.humanize,
+FlySite.create(name: 'goat'.split('_').map(&:capitalize).join(' '),
   slug: 'goat',
   lat: 38.443,
   lng: -123.122,
@@ -206,7 +206,7 @@ FlySite.create(name: 'goat'.humanize,
   dir_ideal: ['WSW', 'W', 'WNW'],
   dir_edge: ['SW', 'WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'hat_creek'.humanize,
+FlySite.create(name: 'hat_creek'.split('_').map(&:capitalize).join(' '),
   slug: 'hat_creek',
   lat: 40.842,
   lng: -121.428,
@@ -219,7 +219,7 @@ FlySite.create(name: 'hat_creek'.humanize,
   dir_ideal: ['WSW', 'W', 'WNW'],
   dir_edge: ['SW', 'WSW', 'W', 'WNW'])
 
-FlySite.create(name: 'hull'.humanize,
+FlySite.create(name: 'hull'.split('_').map(&:capitalize).join(' '),
   slug: 'hull',
   lat: 39.509,
   lng: -122.937,
@@ -232,7 +232,7 @@ FlySite.create(name: 'hull'.humanize,
   dir_ideal: ['SSW', 'SW', 'WSW'],
   dir_edge: ['S', 'SSW', 'SW', 'WSW', 'W'])
 
-FlySite.create(name: 'indian_valley'.humanize,
+FlySite.create(name: 'indian_valley'.split('_').map(&:capitalize).join(' '),
   slug: 'indian_valley',
   lat: 40.194,
   lng: -120.923,
@@ -245,7 +245,7 @@ FlySite.create(name: 'indian_valley'.humanize,
   dir_ideal: ['SSW', 'SW', 'WSW'],
   dir_edge: ['S', 'SSW', 'SW', 'WSW', 'W'])
 
-FlySite.create(name: 'lakeview_blackcap'.humanize,
+FlySite.create(name: 'lakeview_blackcap'.split('_').map(&:capitalize).join(' '),
   slug: 'lakeview_blackcap',
   lat: 42.204264,
   lng: -120.330122,
@@ -258,7 +258,7 @@ FlySite.create(name: 'lakeview_blackcap'.humanize,
   dir_ideal: ['WSW', 'W'],
   dir_edge: ['SW', 'WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'lakeview_dohertyslide'.humanize,
+FlySite.create(name: 'lakeview_dohertyslide'.split('_').map(&:capitalize).join(' '),
   slug: 'lakeview_dohertyslslide',
   lat: 42.019267,
   lng: -119.485666,
@@ -271,7 +271,7 @@ FlySite.create(name: 'lakeview_dohertyslide'.humanize,
   dir_ideal: ['WSW', 'W', 'WNW'],
   dir_edge: ['WSW', 'W', 'WNW'])
 
-FlySite.create(name: 'lakeview_sugarhill'.humanize,
+FlySite.create(name: 'lakeview_sugarhill'.split('_').map(&:capitalize).join(' '),
   slug: 'lakeview_sugarhill',
   lat: 41.806527,
   lng: -120.328704,
@@ -284,7 +284,7 @@ FlySite.create(name: 'lakeview_sugarhill'.humanize,
   dir_ideal: ['WSW', 'SW'],
   dir_edge: ['WSW', 'W', 'SW'])
 
-FlySite.create(name: 'lakeview_hadleybutte'.humanize,
+FlySite.create(name: 'lakeview_hadleybutte'.split('_').map(&:capitalize).join(' '),
   slug: 'lakeview_hadleybutte',
   lat: 42.690833,
   lng: -120.666117,
@@ -297,8 +297,8 @@ FlySite.create(name: 'lakeview_hadleybutte'.humanize,
   dir_ideal: ['N', 'NNE', 'NNW'],
   dir_edge: ['N', 'NNE', 'NE', 'NW', 'NNW'])
 
-FlySite.create(name: 'lagoonkite'.humanize,
-  slug: 'lagoonkite',
+FlySite.create(name: 'lagoon_kite'.split('_').map(&:capitalize).join(' '),
+  slug: 'lagoon_kite',
   lat: 38.333,
   lng: -122.002,
   hourstart: 10,
@@ -310,7 +310,7 @@ FlySite.create(name: 'lagoonkite'.humanize,
   dir_ideal: ['S', 'SSW','SW', 'WSW', 'W', 'WNW','NW', 'NNW'],
   dir_edge: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'])
 
-FlySite.create(name: 'lagoon'.humanize,
+FlySite.create(name: 'lagoon'.split('_').map(&:capitalize).join(' '),
   slug: 'lagoon',
   lat: 38.333,
   lng: -122.002,
@@ -323,7 +323,7 @@ FlySite.create(name: 'lagoon'.humanize,
   dir_ideal: ['SW', 'WSW', 'W', 'WNW'],
   dir_edge: ['SSW', 'SW', 'WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'mussel_rock'.humanize,
+FlySite.create(name: 'mussel_rock'.split('_').map(&:capitalize).join(' '),
   slug: 'mussel_rock',
   lat: 37.674,
   lng: -122.495,
@@ -336,8 +336,8 @@ FlySite.create(name: 'mussel_rock'.humanize,
   dir_ideal: ['WSW', 'W', 'WNW'],
   dir_edge: ['SW', 'WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'mt_tam'.humanize,
-  slug: 'mt_tam',
+FlySite.create(name: 'mount_tam'.split('_').map(&:capitalize).join(' '),
+  slug: 'mount_tam',
   lat: 37.911,
   lng: -122.625,
   hourstart: 10,
@@ -349,7 +349,7 @@ FlySite.create(name: 'mt_tam'.humanize,
   dir_ideal: ['S', 'SSW', 'SW', 'WSW', 'W'],
   dir_edge: ['SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW'])
 
-FlySite.create(name: 'mission'.humanize,
+FlySite.create(name: 'mission'.split('_').map(&:capitalize).join(' '),
   slug: 'mission',
   lat: 37.518,
   lng: -121.892,
@@ -362,7 +362,7 @@ FlySite.create(name: 'mission'.humanize,
   dir_ideal: ['SW', 'WSW', 'W', 'WNW', 'NW'],
   dir_edge: ['SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'N'])
 
-FlySite.create(name: 'owens_lee'.humanize,
+FlySite.create(name: 'owens_lee'.split('_').map(&:capitalize).join(' '),
   slug: 'owens_lee',
   lat: 37.9763,
   lng: -119.1680,
@@ -375,7 +375,7 @@ FlySite.create(name: 'owens_lee'.humanize,
   dir_ideal: ['E', 'ENE'],
   dir_edge: ['NE', 'ENE', 'E', 'ESE', 'SE'])
 
-FlySite.create(name: 'oroville'.humanize,
+FlySite.create(name: 'oroville'.split('_').map(&:capitalize).join(' '),
   slug: 'oroville',
   lat: 39.537,
   lng: -121.628,
@@ -388,7 +388,7 @@ FlySite.create(name: 'oroville'.humanize,
   dir_ideal: ['N', 'NNW'],
   dir_edge: ['N', 'NNE', 'NNW'])
 
-FlySite.create(name: 'pine'.humanize,
+FlySite.create(name: 'pine'.split('_').map(&:capitalize).join(' '),
   slug: 'pine',
   lat: 43.819367,
   lng: -120.932833,
@@ -401,8 +401,8 @@ FlySite.create(name: 'pine'.humanize,
   dir_ideal: ['W', 'WNW', 'NW'],
   dir_edge: ['WSW', 'W', 'WNW', 'NW', 'NNW'])
 
-FlySite.create(name: 'potato'.humanize,
-  slug: 'potato',
+FlySite.create(name: 'potato_hill'.split('_').map(&:capitalize).join(' '),
+  slug: 'potato_hill',
   lat: 39.3317,
   lng: -122.685,
   hourstart: 10,
@@ -414,7 +414,7 @@ FlySite.create(name: 'potato'.humanize,
   dir_ideal: ['ENE', 'E'],
   dir_edge: ['NE', 'ENE', 'E', 'ESE', 'SE'])
 
-FlySite.create(name: 'sand_city'.humanize,
+FlySite.create(name: 'sand_city'.split('_').map(&:capitalize).join(' '),
   slug: 'sand_city',
   lat: 36.626,
   lng: -121.844,
@@ -427,7 +427,7 @@ FlySite.create(name: 'sand_city'.humanize,
   dir_ideal: ['WSW', 'W','WNW'],
   dir_edge: ['SW', 'WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'shasta'.humanize,
+FlySite.create(name: 'shasta'.split('_').map(&:capitalize).join(' '),
   slug: 'shasta',
   lat: 41.377,
   lng: -122.195,
@@ -440,7 +440,7 @@ FlySite.create(name: 'shasta'.humanize,
   dir_ideal: ['SSW', 'SW', 'WSW'],
   dir_edge: ['S', 'SSW', 'SW', 'WSW', 'W'])
 
-FlySite.create(name: 'shoreline'.humanize,
+FlySite.create(name: 'shoreline'.split('_').map(&:capitalize).join(' '),
   slug: 'shoreline',
   lat: 37.430,
   lng: -122.076,
@@ -453,8 +453,8 @@ FlySite.create(name: 'shoreline'.humanize,
   dir_ideal: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'],
   dir_edge: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'])
 
-FlySite.create(name: 'slide .humanizemtn',
-  slug: 'slide',
+FlySite.create(name: 'slide_mountain'.split('_').map(&:capitalize).join(' '),
+  slug: 'slide_mountain',
   lat: 39.319,
   lng: -119.867,
   hourstart: 10,
@@ -466,7 +466,7 @@ FlySite.create(name: 'slide .humanizemtn',
   dir_ideal: ['ENE', 'E', 'ESE'],
   dir_edge: ['NE', 'ENE', 'E', 'ESE', 'SE'])
 
-FlySite.create(name: 'st_helena'.humanize,
+FlySite.create(name: 'st_helena'.split('_').map(&:capitalize).join(' '),
   slug: 'st_helena',
   lat: 38.667,
   lng: -122.628,
@@ -479,7 +479,7 @@ FlySite.create(name: 'st_helena'.humanize,
   dir_ideal: ['SW', 'WSW'],
   dir_edge: ['S', 'SSW', 'SW', 'WSW', 'W'])
 
-FlySite.create(name: 'tollhouse'.humanize,
+FlySite.create(name: 'tollhouse'.split('_').map(&:capitalize).join(' '),
   slug: 'tollhouse',
   lat: 37.015,
   lng: -119.373,
@@ -492,7 +492,7 @@ FlySite.create(name: 'tollhouse'.humanize,
   dir_ideal: ['SW', 'WSW', 'W'],
   dir_edge: ['SSW', 'SW', 'WSW', 'W', 'WNW'])
 
-FlySite.create(name: 'vallejo'.humanize,
+FlySite.create(name: 'vallejo'.split('_').map(&:capitalize).join(' '),
   slug: 'vallejo',
   lat: 38.102,
   lng: -122.264,
@@ -505,7 +505,7 @@ FlySite.create(name: 'vallejo'.humanize,
   dir_ideal: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'],
   dir_edge: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'])
 
-FlySite.create(name: 'whaleback'.humanize,
+FlySite.create(name: 'whaleback'.split('_').map(&:capitalize).join(' '),
   slug: 'whaleback',
   lat: 41.535,
   lng: -122.153,
@@ -518,7 +518,7 @@ FlySite.create(name: 'whaleback'.humanize,
   dir_ideal: ['WSW', 'W', 'WNW'],
   dir_edge: ['SW', 'WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'waddel'.humanize,
+FlySite.create(name: 'waddel'.split('_').map(&:capitalize).join(' '),
   slug: 'waddel',
   lat: 37.089,
   lng: -122.274,
@@ -531,7 +531,7 @@ FlySite.create(name: 'waddel'.humanize,
   dir_ideal: ['WSW', 'W', 'WNW'],
   dir_edge: ['WSW', 'W', 'WNW', 'NW'])
 
-FlySite.create(name: 'windy'.humanize,
+FlySite.create(name: 'windy'.split('_').map(&:capitalize).join(' '),
   slug: 'windy',
   lat: 37.364,
   lng: -122.245,
@@ -544,7 +544,7 @@ FlySite.create(name: 'windy'.humanize,
   dir_ideal: ['ENE', 'E'],
   dir_edge: ['NE', 'ENE', 'E', 'ESE', 'SE'])
 
-FlySite.create(name: 'woodrat'.humanize,
+FlySite.create(name: 'woodrat'.split('_').map(&:capitalize).join(' '),
   slug: 'woodrat',
   lat: 42.2313,
   lng: -123.0037,
