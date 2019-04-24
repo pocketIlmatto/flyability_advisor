@@ -4,7 +4,7 @@
     <% dow = get_dow(score_dow_num) %>
     <a data-toggle="collapse" href=<%= "#collapse_#{fly_site.slug}_#{dow}" %>  aria-expanded="false" aria-controls=<%= "collapse_#{fly_site.slug}_#{dow}" %>>
       <canvas id=<%= "canvas_#{fly_site.slug}_#{score_dow_num}" %> 
-        class="dow-gradient" width="80" height="20">
+        class="dow-gradient" width="20" height="10">
         Sorry, your browser doesn't support the &lt;canvas&gt; element.
       </canvas>
     </a>
