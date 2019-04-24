@@ -21,6 +21,7 @@ var ScoreGradient = {
         currentPeriod += 1
       }
       if (disableCollapse) {
+        grd.addColorStop(1, "#F5F5F5");
         $(`#${elementId}`).parent().removeAttr('data-toggle');
       }
       ctx.fillStyle = grd;
