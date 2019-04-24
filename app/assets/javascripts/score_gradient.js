@@ -27,11 +27,11 @@ var ScoreGradient = {
       ctx.fillRect(0, 0, c.width, c.height);
 
       $(`#${collapseSectionId}`).on("show.bs.collapse", function(){
-        $(`#${elementId}`).addClass("border-left border-right");
+        $(`#${elementId}`).addClass("border border-primary");
       });
 
       $(`#${collapseSectionId}`).on("hide.bs.collapse", function(){
-        $(`#${elementId}`).removeClass("border-left border-right");
+        $(`#${elementId}`).removeClass("border border-primary");
       });
     }
   },
