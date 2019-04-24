@@ -1,9 +1,14 @@
 <div class="row">
-  <% fly_site.latest_flyability_score.score_details.each_pair do |dow, score_detail| %>
-    <div class="col-1 pl-0 pr-0 pb-0 pt-0">
-      <canvas id=<%= "canvas_#{fly_site.slug}_#{dow}" %> width="100" height="25">
+  <% collapse_score_dow_nums = [] %>
+  <% fly_site.latest_flyability_score.scores.map{|k,_| k.to_i}.sort.each do |score_dow_num| %>
+    <% dow = get_dow(score_dow_num) %>
+    <a data-toggle="collapse" href=<%= "#collapse_#{fly_site.slug}_#{dow}" %>  aria-expanded="false" aria-controls=<%= "collapse_#{fly_site.slug}_#{dow}" %>>
+      <canvas id=<%= "canvas_#{fly_site.slug}_#{score_dow_num}" %> 
+        class="dow-gradient" width="80" height="20">
         Sorry, your browser doesn't support the &lt;canvas&gt; element.
       </canvas>
-    </div>
+    </a>
+    <% collapse_score_dow_nums << score_dow_num %>
   <% end %>
+  <%= render partial: "shared/expanded_score_forecast", locals: { fly_site: fly_site, collapse_score_dow_nums: collapse_score_dow_nums } %>
 </div>

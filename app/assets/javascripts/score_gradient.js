@@ -20,6 +20,10 @@ var ScoreGradient = {
 
       ctx.fillStyle = grd;
       ctx.fillRect(0, 0, c.width, c.height);
+
+      $(`#${elementId}`).click(function(){
+        $(`#${elementId}`).toggleClass("border-left border-right");
+      });
     }
   },
 
