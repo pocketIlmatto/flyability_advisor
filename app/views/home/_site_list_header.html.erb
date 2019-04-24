@@ -6,7 +6,7 @@
       <% day_num = Time.now.day %>
       <% 0..7.times do  %>
         <% dow = get_dow(wkday) %>
-        <div class="dow-gradient text-center">
+        <div class="dow-gradient text-center border-right">
           <%= dow %><br/><%= day_num %>
         </div>
         <% wkday += 1 %>
