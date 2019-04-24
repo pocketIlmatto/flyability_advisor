@@ -7,23 +7,29 @@ var ScoreGradient = {
 
       var grd = ctx.createLinearGradient(0, 0, c.width, 0);
       
-      periods = this.countPeriods(scores);
-      currentPeriod = 0;
+      var periods = this.countPeriods(scores);
+      
+      var currentPeriod = 0;
+      var disableCollapse = true;
       for (var i in scores) {
         var key = i;
         var score = scores[i].score;
         if (score != "not_in_flying_window") {
+          disableCollapse = false;
           grd.addColorStop(currentPeriod/periods, this.determineColor(score, scores[i].speed_max_act));
         }
         currentPeriod += 1
       }
-
+      if (disableCollapse) {
+        $(`#${elementId}`).parent().removeAttr('data-toggle');
+      }
       ctx.fillStyle = grd;
       ctx.fillRect(0, 0, c.width, c.height);
 
       $(`#${elementId}`).click(function(){
         $(`#${elementId}`).toggleClass("border-left border-right");
       });
+
     }
   },
 
