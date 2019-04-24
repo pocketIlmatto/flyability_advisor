@@ -10,5 +10,7 @@
     </a>
     <% collapse_score_dow_nums << score_dow_num %>
   <% end %>
+</div>
+<div class="row">
   <%= render partial: "shared/expanded_score_forecast", locals: { fly_site: fly_site, collapse_score_dow_nums: collapse_score_dow_nums } %>
 </div>
