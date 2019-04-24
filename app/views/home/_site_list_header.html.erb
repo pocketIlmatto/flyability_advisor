@@ -1,0 +1,17 @@
+<div class="row border-bottom site-list-header">
+  <div class="col-4 pl-2 pr-2 pb-1 pt-1 site-list-header-sites"></div>
+  <div class="col-8 pl-2 pr-2 pb-1 pt-1 site-list-header-dows">
+    <div class="row">
+      <% wkday = Time.now.wday %>
+      <% day_num = Time.now.day %>
+      <% 0..7.times do  %>
+        <% dow = get_dow(wkday) %>
+        <div class="dow-gradient text-center">
+          <%= dow %><br/><%= day_num %>
+        </div>
+        <% wkday += 1 %>
+        <% day_num += 1 %>
+      <% end %>
+    </div>
+  </div>
+</div>
