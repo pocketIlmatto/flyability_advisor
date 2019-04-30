@@ -1,7 +1,7 @@
 class FetchNWSMetaData
 
-  def self.call(fly_site)
-    nws_url = "https://api.weather.gov/points/#{fly_site.lat},#{fly_site.lng}"
+  def self.call(lat, lng)
+    nws_url = "https://api.weather.gov/points/#{lat},#{lng}"
     nws_meta_data = {}
     begin
       response = RestClient.get(nws_url)
@@ -14,7 +14,7 @@ class FetchNWSMetaData
         nws_meta_data.merge!(forecastZone: forecast_zone_match[1])
       end
     rescue
-      puts "Could not update fly_site id: #{fly_site.id}"
+      puts "Could not fetch nws metadata for: #{lat}, #{lng}"
     end
     nws_meta_data
   end

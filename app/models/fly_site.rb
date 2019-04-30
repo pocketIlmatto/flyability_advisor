@@ -24,6 +24,6 @@ class FlySite < ApplicationRecord
   
 private
   def populate_nws_meta_data
-    self.nws_meta_data = FetchNWSMetaData.call(self)
+    self.nws_meta_data = FetchNWSMetaData.call(lat, lng)
   end
 end
