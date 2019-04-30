@@ -1,0 +1,2 @@
+class HourlyForecast < ApplicationRecord
+end
