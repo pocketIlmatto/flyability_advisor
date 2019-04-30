@@ -5,7 +5,7 @@ module GetForecast
     SOURCE = 'NWS'
     TTL_HOURS = 8
 
-    def self.fetch(fly_site)
+    def self.call(fly_site)
       if !fly_site.lat || !fly_site.lng
         Rails.logger.info "Cannot fetch forecast for site without GPS coordinates"
         return
