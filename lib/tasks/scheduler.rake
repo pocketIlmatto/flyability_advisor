@@ -1,11 +1,11 @@
 desc "This task is called by the Heroku scheduler add-on"
 task :fetch_forecasts => :environment do
-  puts "event=rake_task_started task=forecasts:nws:get_all time=#{Time.now.utc} UTC"
+  puts "event=rake_task_started task=forecasts:nws:get_all_forecasts time=#{Time.now.utc} UTC"
   FlySite.all.each do |fly_site|
-    GetForecast::NWS.fetch(fly_site)
+    GetForecast::NWS.call(fly_site)
     sleep(0.25) # Avoid rate limits
   end
-  puts "event=rake_task_finished task=forecasts:nws:get_all time=#{Time.now.utc} UTC"
+  puts "event=rake_task_finished task=forecasts:nws:get_all_forecasts time=#{Time.now.utc} UTC"
 end
 
 task :calculate_flyability_scores => :environment do
