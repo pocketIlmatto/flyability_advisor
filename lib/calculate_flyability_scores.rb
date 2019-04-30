@@ -1,3 +1,4 @@
+# TODO: Remove once views have been converted to use hourly_flyability_scores
 class CalculateFlyabilityScores
 
   # 1.0.1 Uses the short forecast to determine precipitation levels

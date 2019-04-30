@@ -1,3 +1,4 @@
+# TODO: Remove once views have been converted to use hourly_flyability_scores
 namespace :flyability do
   
   desc 'Calculate flyability scores for all fly sites'
