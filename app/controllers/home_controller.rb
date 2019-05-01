@@ -19,7 +19,7 @@ class HomeController < ApplicationController
     fly_site_ids = FlySite.in_bounds(bounds).sort_by{|f| f.distance_to([@lat, @lng])}.pluck(:id).uniq
  
     # @fly_sites needs to be ActiveRecord::Relation for pagination to work correctly
-    @fly_sites = FlySite.for_ids_with_order(fly_site_ids).includes([:latest_flyability_score])
+    @fly_sites = FlySite.for_ids_with_order(fly_site_ids)
     
     @fly_sites = @fly_sites.page(params[:page] ? params[:page] : 1)
 
