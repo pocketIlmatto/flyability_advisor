@@ -14,8 +14,12 @@ module Flyability
 
     def self.nws(fly_site, hourly_forecast)
       data = hourly_forecast.data
+      time_hour = hourly_forecast.start_time
+        .in_time_zone("Pacific Time (US & Canada)").hour
 
-      return 'not_in_flying_window' unless data['isDaytime']
+      if time_hour <= fly_site.hourstart || time_hour >= fly_site.hourend
+        return 'not_in_flying_window' 
+      end
 
       short_forecast_no_gos = ['Rain Showers', 'Chance Rain Showers']
       
