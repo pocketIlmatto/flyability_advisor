@@ -1,2 +1,0 @@
-class FlyabilityScore < ApplicationRecord
-end
