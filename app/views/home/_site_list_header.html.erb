@@ -5,9 +5,9 @@
       <% wkday = Time.now.wday %>
       <% date = Time.now.in_time_zone("Pacific Time (US & Canada)") %>
       <% day_num = date.day %>
-      <% 0..7.times do  %>
+      <% (0..6).each do |i|  %>
         <% dow = get_dow(wkday) %>
-        <div class="dow-gradient text-center border-left">
+        <div id="<%= i %>-date-header" class="dow-gradient text-center dow-regular-header-border <%= i %>-date">
           <%= dow %><br/><%= day_num %>
         </div>
         <% wkday += 1 %>

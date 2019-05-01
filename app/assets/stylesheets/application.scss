@@ -20,7 +20,20 @@ canvas {
   width: 2em;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
-  border-left: 0.5px solid #284b5e;
+  cursor: pointer;
+}
+
+.dow-regular-border {
+  border-left: 0.9px solid #fefefe;
+}
+
+.dow-regular-header-border {
+  border-left: 0.9px solid;
+}
+
+.dow-highlight-border {
+  border-left: 1px solid #4883aa;
+  border-right: 1px solid #4883aa;
 }
 
 .dow_detailed_score_info {

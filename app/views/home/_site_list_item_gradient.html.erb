@@ -1,6 +1,6 @@
 <div class="row p-0">
   <% (0..6).each do |i| %>
-    <a data-toggle="collapse" href=<%= "#collapse_#{fly_site.slug}_#{i}" %> class="dow-gradient" aria-expanded="false" aria-controls=<%= "collapse_#{fly_site.slug}_#{i}" %>>
+    <a data-toggle="collapse" href=<%= "#collapse_#{fly_site.slug}_#{i}" %> class="dow-gradient dow-regular-border <%= i %>-date" aria-expanded="false" aria-controls=<%= "collapse_#{fly_site.slug}_#{i}" %>>
       <canvas id=<%= "canvas_#{fly_site.slug}_#{i}" %> 
          height="100%" >
         Sorry, your browser doesn't support the &lt;canvas&gt; element.
