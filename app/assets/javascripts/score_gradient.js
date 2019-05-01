@@ -1,5 +1,5 @@
 var ScoreGradient = {
-  draw : function(elementId, collapseSectionId, scores) {
+  draw : function(elementId, collapseSectionId, scores, winds) {
     var c = document.getElementById(elementId);
     
     if (c) {
@@ -16,46 +16,59 @@ var ScoreGradient = {
         score = scores[i];
         if (score != "not_in_flying_window") {
           disableCollapse = false;
-          grd.addColorStop(currentPeriod/periods, this.determineColor(score, 0));
+          grd.addColorStop(currentPeriod/periods, this.determineColor(score, winds[i]));
         }
         currentPeriod += 1
       }
       if (disableCollapse) {
-        grd.addColorStop(1, "#F5F5F5");
+        grd.addColorStop(1, "#ffffff");
         $(`#${elementId}`).parent().removeAttr('data-toggle');
       }
       ctx.fillStyle = grd;
       ctx.fillRect(0, 0, c.width, c.height);
 
       $(`#${collapseSectionId}`).on("show.bs.collapse", function(){
-        $(`#${elementId}`).addClass("border border-primary");
+        $(`#${elementId}`).parent().addClass("border border-dark");
       });
 
       $(`#${collapseSectionId}`).on("hide.bs.collapse", function(){
-        $(`#${elementId}`).removeClass("border border-primary");
+        $(`#${elementId}`).parent().removeClass("border border-dark");
       });
     }
   },
 
   determineColor: function(score, windSpeed) {
     var color;
-    // var colorModifier = (10 - windSpeed)/100;
-    colorModifier = 0;
+    if (windSpeed >= 20) {
+      color = "#ff0000";
+    } else if (windSpeed >= 17) {
+      color = "#ff6600";
+    } else if (windSpeed >= 15) {
+      color = "#ff9900";
+    } else if (windSpeed >= 13) {
+      color = "#ccff66";
+    } else if (windSpeed >= 10) {
+      color = "#3bd43f";
+    } else if (windSpeed >= 8) {
+      color = "#50c1a8";
+    } else if (windSpeed >= 5) {
+      color = "#4883aa";
+    } else {
+      color = "#284b5e";
+    }
+
     switch(score) {
-      case "ideal":
-        color = this.changeColorByX("#008000", colorModifier, 0, colorModifier);
-        break;
       case "edge":
-        color = this.changeColorByX("#FFA500", 0, 0, colorModifier);
+        color = `${color}56`;
         break;
       case "no":
-        color = this.changeColorByX("#A9A9A9", colorModifier, colorModifier, colorModifier);
+        color = `${color}4D`;
         break;
       case "not_in_flying_window":
-        color = this.changeColorByX("#F5F5F5", colorModifier, colorModifier, colorModifier);
+        color = `${color}1A`;
         break;
       default:
-        color = "#F5F5F5"
+        color = color;
     }
     return color;
   },
