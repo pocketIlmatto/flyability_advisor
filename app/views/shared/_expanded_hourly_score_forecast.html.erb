@@ -1,25 +1,38 @@
 <div class="accordion-group">
   <% (0..8).each do |i| %>
+    <% display_details = translate_score_details_for_display(fly_site, i) %>
+
     <div class="collapse" id=<%= "collapse_#{fly_site.slug}_#{i}" %> data-parent=<%= "#collapse_group_#{fly_site.slug}" %>>
       <div class="border rounded bg-light">
         <button data-toggle="collapse" data-target=<%= "#collapse_#{fly_site.slug}_#{i}" %>  aria-expanded="false" aria-controls=<%= "collapse_#{fly_site.slug}_#{i}" %>>
           <span aria-hidden="true">&times;</span>
-        </button>  
+        </button>
+        <%= (Time.now.in_time_zone("Pacific Time (US & Canada)") + i.days).strftime("%A, %B %d") %>
         <table class="table-sm rounded">
           <!-- Hours -->
           <tr>
             <td class="dow_detailed_score_info">PDT</td>
+            <% display_details[:hours].each_with_index do |hour, i| %>
+              <td class="border-bottom dow_detailed_score_info"><%= hour %></td>
+            <% end %>
           </tr>
 
           <!-- Winds -->
           <tr>
             <td class="dow_detailed_score_info">mph</td>
+            <% display_details[:speeds].each_with_index do |speed, i| %>
+              <td class="border-bottom dow_detailed_score_<%= display_details[:scores][i] %>"><%= speed %></td>
+            <% end %>
           </tr>
 
           <!-- Directions -->
           <tr>
             <td class="dow_detailed_score_info"><i class="far fa-compass"></i></td>
+            <% display_details[:directions].each_with_index do |direction, i| %>
+              <td class="dow_detailed_score_<%= display_details[:scores][i] %>"><i class="fas fa-arrow-up" data-fa-transform="<%= direction %>"></i></td>
+            <% end %>
           </tr>
+
         </table>
       </div>
     </div>

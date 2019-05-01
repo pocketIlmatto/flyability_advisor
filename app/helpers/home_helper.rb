@@ -58,15 +58,19 @@ module HomeHelper
     end
   end
 
-  def translate_score_details_for_display(score_details_dow)
-    display_details = {scores: [], hours: [], speeds: [], directions: []}
-    score_details_dow.each_pair do |hour, score_details_dow_hour|
-      next if score_details_dow_hour["score"] == "not_in_flying_window"
-      display_details[:hours] << hour
-      display_details[:scores] << score_details_dow_hour["score"]
-      display_details[:speeds] << score_details_dow_hour["speed_max_act"]
-      display_details[:directions] << get_directional_arrow_class(score_details_dow_hour["wind_direction"])
-    end
-    display_details
+  def translate_score_details_for_display(fly_site, days_ahead)
+    scores = fly_site.hourly_flyability_scores.current
+      .by_days_ahead(days_ahead, "Pacific Time (US & Canada)")
+    
+    scores = scores.reject { |s| s.scores['launchability'] == 'not_in_flying_window' }
+
+    forecasts = fly_site.hourly_forecasts.current.where(start_time: scores.map { |s| s.start_time} )
+  
+    display_details = {
+      scores: scores.map { |hf| hf.scores['launchability']}, 
+      hours: scores.map { |hf| hf.start_time.in_time_zone("Pacific Time (US & Canada)").hour }, 
+      speeds: forecasts.map { |hf| hf.data["speed_max_act"] }, 
+      directions: forecasts.map { |hf| get_directional_arrow_class(hf.data["windDirection"]) }
+    }
   end
 end
