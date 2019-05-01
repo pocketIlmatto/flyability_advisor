@@ -3,14 +3,16 @@
   <div class="col-8 pl-2 pr-2 pb-1 pt-1 site-list-header-dows">
     <div class="row">
       <% wkday = Time.now.wday %>
-      <% day_num = Time.now.day %>
-      <% 0..7.times do  %>
+      <% date = Time.now.in_time_zone("Pacific Time (US & Canada)") %>
+      <% day_num = date.day %>
+      <% 0..8.times do  %>
         <% dow = get_dow(wkday) %>
         <div class="dow-gradient text-center border-right">
           <%= dow %><br/><%= day_num %>
         </div>
         <% wkday += 1 %>
-        <% day_num += 1 %>
+        <% date = date + 1.day %>
+        <% day_num = date.day %>
       <% end %>
     </div>
   </div>
