@@ -19,7 +19,7 @@ module ProcessIntoHourlyForecasts
         # Assumes that each period is for 1 hour, which should be true for this 
         # NWS product
         data["periods"].each do |period|
-          start_hour = Time.parse(period["startTime"]).change(min: 0)
+          start_hour = Time.parse(period["startTime"]).utc.change(min: 0)
           hourly_forecast = ::HourlyForecast.find_or_initialize_by(
             fly_site_id: fly_site.id, source: SOURCE, start_time: start_hour)
           hourly_forecast.data_updated_at = data["updated"]
