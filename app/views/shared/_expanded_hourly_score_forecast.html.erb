@@ -1,0 +1,27 @@
+<div class="accordion-group">
+  <% (0..8).each do |i| %>
+    <div class="collapse" id=<%= "collapse_#{fly_site.slug}_#{i}" %> data-parent=<%= "#collapse_group_#{fly_site.slug}" %>>
+      <div class="border rounded bg-light">
+        <button data-toggle="collapse" data-target=<%= "#collapse_#{fly_site.slug}_#{i}" %>  aria-expanded="false" aria-controls=<%= "collapse_#{fly_site.slug}_#{i}" %>>
+          <span aria-hidden="true">&times;</span>
+        </button>  
+        <table class="table-sm rounded">
+          <!-- Hours -->
+          <tr>
+            <td class="dow_detailed_score_info">PDT</td>
+          </tr>
+
+          <!-- Winds -->
+          <tr>
+            <td class="dow_detailed_score_info">mph</td>
+          </tr>
+
+          <!-- Directions -->
+          <tr>
+            <td class="dow_detailed_score_info"><i class="far fa-compass"></i></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>
