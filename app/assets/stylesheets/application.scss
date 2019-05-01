@@ -8,21 +8,11 @@
 
 canvas {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .site-nav-tab {
   font-size: 0.75rem;
-}
-
-.dow-forecast {
-  display: inline-block;
-  text-align: center;
-  width: 2em;
-  margin: 0 0 0 0;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
 }
 
 .dow-gradient {
@@ -30,6 +20,7 @@ canvas {
   width: 2em;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
+  border-left: 0.5px solid #284b5e;
 }
 
 .dow_detailed_score_info {

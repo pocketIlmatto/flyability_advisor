@@ -1,8 +1,8 @@
-<div class="row">
-  <% (0..7).each do |i| %>
-    <a data-toggle="collapse" href=<%= "#collapse_#{fly_site.slug}_#{i}" %>  aria-expanded="false" aria-controls=<%= "collapse_#{fly_site.slug}_#{i}" %>>
+<div class="row p-0">
+  <% (0..6).each do |i| %>
+    <a data-toggle="collapse" href=<%= "#collapse_#{fly_site.slug}_#{i}" %> class="dow-gradient" aria-expanded="false" aria-controls=<%= "collapse_#{fly_site.slug}_#{i}" %>>
       <canvas id=<%= "canvas_#{fly_site.slug}_#{i}" %> 
-        class="dow-gradient" width="20" height="10">
+         height="100%" >
         Sorry, your browser doesn't support the &lt;canvas&gt; element.
       </canvas>
     </a>

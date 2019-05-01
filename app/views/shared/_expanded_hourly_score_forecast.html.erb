@@ -1,5 +1,5 @@
 <div class="accordion-group">
-  <% (0..8).each do |i| %>
+  <% (0..7).each do |i| %>
     <% display_details = translate_score_details_for_display(fly_site, i) %>
 
     <div class="collapse" id=<%= "collapse_#{fly_site.slug}_#{i}" %> data-parent=<%= "#collapse_group_#{fly_site.slug}" %>>
