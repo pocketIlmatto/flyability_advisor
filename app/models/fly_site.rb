@@ -13,9 +13,11 @@ class FlySite < ApplicationRecord
 
   has_and_belongs_to_many :users, -> { distinct }
   has_many :flyability_scores
-  has_many :hourly_forecasts
   has_one :latest_flyability_score, -> { order(updated_at: :desc) }, class_name: "FlyabilityScore"
 
+  has_many :hourly_flyability_scores
+  has_many :hourly_forecasts
+  
   serialize :nws_meta_data, JSONBSerializeWithIndifferentAccess
 
   store_accessor :nws_meta_data, :forecastZone

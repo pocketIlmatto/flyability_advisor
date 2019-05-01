@@ -1,10 +1,10 @@
 $(function() {
   <% @fly_sites.each do |fly_site| %>
-    <% fly_site.latest_flyability_score.score_details.each_pair do |dow, score_detail| %>
-      <% dow_collapse = get_dow(dow) %>
-      ScoreGradient.draw("<%= "canvas_#{fly_site.slug}_#{dow}" %>",
-        "<%= "collapse_#{fly_site.slug}_#{dow_collapse}" %>",
-        JSON.parse('<%= raw(escape_javascript(score_detail.to_json)) %>'));
+    <% (0..7).each do |i| %>
+      <% scores = fly_site.hourly_flyability_scores.current.by_days_ahead(i, "Pacific Time (US & Canada)").map { |hf| hf.scores['launchability']} %>
+      ScoreGradient.draw("<%= "canvas_#{fly_site.slug}_#{i}" %>",
+          "<%= "collapse_#{fly_site.slug}_#{i}" %>",
+          JSON.parse('<%= raw(escape_javascript(scores.to_json)) %>'));
     <% end %>
   <% end %>
 });

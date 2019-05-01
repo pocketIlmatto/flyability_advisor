@@ -9,14 +9,14 @@ var ScoreGradient = {
       
       var periods = this.countPeriods(scores);
       
-      var currentPeriod = 0;
+      var currentPeriod = 1;
       var disableCollapse = true;
-      for (var i in scores) {
-        var key = i;
-        var score = scores[i].score;
+
+      for (var i = 0; i < scores.length; i++) {
+        score = scores[i];
         if (score != "not_in_flying_window") {
           disableCollapse = false;
-          grd.addColorStop(currentPeriod/periods, this.determineColor(score, scores[i].speed_max_act));
+          grd.addColorStop(currentPeriod/periods, this.determineColor(score, 0));
         }
         currentPeriod += 1
       }
@@ -39,7 +39,8 @@ var ScoreGradient = {
 
   determineColor: function(score, windSpeed) {
     var color;
-    var colorModifier = (10 - windSpeed)/100;
+    // var colorModifier = (10 - windSpeed)/100;
+    colorModifier = 0;
     switch(score) {
       case "ideal":
         color = this.changeColorByX("#008000", colorModifier, 0, colorModifier);
