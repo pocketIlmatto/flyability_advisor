@@ -81,9 +81,6 @@
     </div>
     <div id="forecast-tab" class="tab-pane fade container mt-2">
       <div class="row mb-2">
-        <%= render partial: "shared/dow_row", locals: { fly_site: @fly_site } %>
-      </div>
-      <div class="row mb-2">
         <div class="nws_image">
           <img alt="#" src=<%= "#{nws_plotter_url(@fly_site, true)}" %> width="640"  />
         </div>
