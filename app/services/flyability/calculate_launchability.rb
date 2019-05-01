@@ -19,18 +19,8 @@ module Flyability
 
       short_forecast_no_gos = ['Rain Showers', 'Chance Rain Showers']
       
-      wind_speed = data['windSpeed']
-      speed_min_act = 0
-      speed_max_act = 0
-      if wind_speed.length < 7
-        speed_min_act = wind_speed[0, wind_speed.index('mph')]
-        speed_max_act = wind_speed[0, wind_speed.index('mph')]
-      else
-        speed_min_act = wind_speed[0, wind_speed.index('to')]
-        speed_max_act = wind_speed.match(/to(.*)mph/)[1]
-      end
-      speed_min_act = speed_min_act.try(:strip).try(:to_i)
-      speed_max_act = speed_max_act.try(:strip).try(:to_i)
+      speed_min_act = data['speed_min_act']
+      speed_max_act = data['speed_max_act']
 
       wind_direction = data['windDirection']
       short_forecast = data['shortForecast']
