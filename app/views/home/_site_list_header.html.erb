@@ -7,7 +7,7 @@
       <% day_num = date.day %>
       <% (0..6).each do |i|  %>
         <% dow = get_dow(wkday) %>
-        <div id="<%= i %>-date-header" class="dow-gradient text-center dow-regular-header-border <%= i %>-date">
+        <div class="dow-gradient text-center dow-regular-header-border <%= i %>-date-header">
           <%= dow %><br/><%= day_num %>
         </div>
         <% wkday += 1 %>
