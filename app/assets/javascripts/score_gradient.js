@@ -1,5 +1,5 @@
 var ScoreGradient = {
-  draw : function(elementId, collapseSectionId, scores, winds) {
+  draw : function(elementId, collapseSectionId, scores) {
     var c = document.getElementById(elementId);
     
     if (c) {
@@ -16,7 +16,7 @@ var ScoreGradient = {
         score = scores[i];
         if (score != "not_in_flying_window") {
           disableCollapse = false;
-          grd.addColorStop(currentPeriod/periods, this.determineColor(score, winds[i]));
+          grd.addColorStop(currentPeriod/periods, this.determineColor(score));
         }
         currentPeriod += 1
       }
@@ -37,38 +37,28 @@ var ScoreGradient = {
     }
   },
 
-  determineColor: function(score, windSpeed) {
-    var color;
-    if (windSpeed >= 20) {
-      color = "#ff0000";
-    } else if (windSpeed >= 17) {
-      color = "#ff6600";
-    } else if (windSpeed >= 15) {
-      color = "#ff9900";
-    } else if (windSpeed >= 13) {
-      color = "#ccff66";
-    } else if (windSpeed >= 10) {
-      color = "#3bd43f";
-    } else if (windSpeed >= 8) {
-      color = "#50c1a8";
-    } else if (windSpeed >= 5) {
-      color = "#4883aa";
-    } else {
-      color = "#284b5e";
-    }
+  determineColor: function(score) {
+    var color = "#ffffff1A";
 
     switch(score) {
-      case "edge":
-        color = `${color}56`;
+      case 2:
+        color = "#284b5e";
         break;
-      case "no":
-        color = `${color}4D`;
+      case 3:
+        color = "#4883aa";
         break;
-      case "not_in_flying_window":
-        color = `${color}1A`;
+      case 4:
+        color = "#50c1a8";
         break;
-      default:
-        color = color;
+      case 5:
+        color = "#3bd43f";
+        break;
+      case 6:
+        color = "#ff9900";
+        break;
+      case 7:
+        color = "#ff6600";
+        break;
     }
     return color;
   },

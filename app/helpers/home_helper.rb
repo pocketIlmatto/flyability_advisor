@@ -6,19 +6,6 @@ module HomeHelper
     DOW_MAP[wkday.to_s]
   end
 
-  def get_score_css_class(score)
-    case score
-    when "hell-yes"
-      "bg-success"
-    when "go"
-      "bg-info"
-    when "maybe"
-      "bg-warning"
-    else
-      "bg-secondary"
-    end
-  end
-
   def get_directional_arrow_class(direction)
     case direction
     when "SSE"

@@ -2,7 +2,7 @@ module Flyability
 
   class CalculateLaunchability
 
-    CALCULATION_VERSION = '1.0.0'
+    CALCULATION_VERSION = '2.0.0'
 
     def self.call(fly_site, hourly_forecast)
       if hourly_forecast.source == 'NWS'
@@ -30,19 +30,32 @@ module Flyability
       short_forecast = data['shortForecast']
 
       score = ''
-      if speed_min_act >= fly_site.speedmin_ideal &&
-        speed_max_act <= fly_site.speedmax_ideal &&
-        fly_site.dir_ideal.include?(wind_direction) &&
-        !short_forecast_no_gos.include?(short_forecast)
-        score = 'ideal'
-      elsif speed_min_act >= fly_site.speedmin_edge && 
-        speed_max_act <= fly_site.speedmax_edge &&
-        fly_site.dir_edge.include?(wind_direction)
-        !short_forecast_no_gos.include?(short_forecast)
-        score = 'edge'
-      else
-        score = 'no'
+      if short_forecast_no_gos.include?(short_forecast)
+        return 0
       end
+
+      speed_score = 0
+      direction_score = 0
+      if speed_min_act >= fly_site.speedmin_ideal && 
+        speed_max_act <= fly_site.speedmax_ideal
+        speed_score = 3
+      elsif speed_min_act >= fly_site.speedmin_edge && 
+        speed_max_act <= fly_site.speedmax_edge
+        speed_score = 1 if speed_min_act <= fly_site.speedmin_ideal
+        speed_score = 5 if speed_max_act >= fly_site.speedmax_ideal
+      else
+        speed_score = 0
+      end
+
+      if fly_site.dir_ideal.include?(wind_direction)
+        direction_score = 2
+      elsif fly_site.dir_edge.include?(wind_direction)
+        direction_score = 1
+      else
+        direction_score = 0
+      end
+
+      score = speed_score + direction_score
     
       score
     end
