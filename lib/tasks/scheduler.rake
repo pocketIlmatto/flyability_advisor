@@ -23,3 +23,13 @@ task :generate_hourly_flyability_scores => :environment do
   end
   puts "event=rake_task_finished task=flyability_scores:generate_all time=#{Time.now.utc} UTC"
 end
+
+task :heroku_clean_up_old_data => :environment do
+  cutoff_time = Time.now.beginning_of_day.utc - 5.days
+  puts "event=rake_task_started task=heroku_clean_up_old_data time=#{Time.now.utc} UTC"
+  Forecast.where("updated_at <= ?", cutoff_time).delete_all
+  HourlyForecast.where("updated_at <= ?", cutoff_time).delete_all
+  HourlyFlyabilityScore.where("updated_at <= ?", cutoff_time).delete_all
+  puts "event=rake_task_finished task=heroku_clean_up_old_data time=#{Time.now.utc} UTC"
+  
+end
