@@ -21,16 +21,11 @@
             </li>
           <% else %>
             <li class="nav-item">
-              <%= current_user[:name] %>
-            </li>
-            <li class="nav-item">
               <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
           </ul>
         <% end %>
       </div>
-      <!-- Collapsible content -->
-
     </nav>
     <!--/.Navbar-->
   </div>
