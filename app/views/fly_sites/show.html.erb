@@ -43,29 +43,26 @@
           <table class="table table-striped">
             <tbody>
               <tr>
-                <th scope="row">Flying window start time:</th>
-                <td><%= "#{@fly_site.hourstart}:00" %></td>
+                <th scope="row">Flying window:</th>
+                <td>
+                  <input type="hidden" class="hour-range-slider" value=<%= "#{@fly_site.hourstart},#{@fly_site.hourend}" %> />
+                </td>
               </tr>
+              
               <tr>
-                <th scope="row">Flying window end time:</th>
-                <td><%= "#{@fly_site.hourend}:00" %></td>
+                <th scope="row">Ideal wind speed:</th>
+                <td>
+                  <input type="hidden" class="ideal-speed-range-slider" value=<%= "#{@fly_site.speedmin_ideal},#{@fly_site.speedmax_ideal}" %> />
+                </td>
               </tr>
+
               <tr>
-                <th scope="row">Min speed (ideal):</th> 
-                <td><%= @fly_site.speedmin_ideal %> mph</td>
+                <th scope="row">Edge wind speed:</th>
+                <td>
+                  <input type="hidden" class="ideal-speed-range-slider" value=<%= "#{@fly_site.speedmin_edge},#{@fly_site.speedmax_edge}" %> />
+                </td>
               </tr>
-              <tr>
-                <th scope="row">Max speed (ideal):</th> 
-                <td><%= @fly_site.speedmax_ideal %> mph</td>
-              </tr>
-              <tr>
-                <th scope="row">Min speed (edge):</th> 
-                <td><%= @fly_site.speedmin_edge %> mph</td>
-              </tr>
-              <tr>
-                <th scope="row">Max speed (edge):</th> 
-                <td><%= @fly_site.speedmax_edge %> mph</td>
-              </tr>
+
               <tr>
                 <th scope="row">Wind direction(s) (ideal):</th>
                 <td><%= @fly_site.dir_ideal %></td>
