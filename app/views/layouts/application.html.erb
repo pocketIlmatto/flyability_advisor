@@ -11,14 +11,13 @@
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
 
-    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+Rails.application.credentials.google_maps_api_key %>
     <%= javascript_include_tag 'application' %>
     <%= yield(:head_tags) %>
-  </head>       
+  </head>
 
   <body>
     <%= render 'layouts/welcome_modal' %>
-    
+
     <div class="container mt-2 pl-2">
       <%= render 'layouts/messages' %>
       <%= render 'layouts/nav' %>
