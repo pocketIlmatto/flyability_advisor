@@ -7,7 +7,7 @@
         <button data-toggle="collapse" data-target=<%= "#collapse_#{fly_site.slug}_#{i}" %>  aria-expanded="false" aria-controls=<%= "collapse_#{fly_site.slug}_#{i}" %>>
           <span aria-hidden="true">&times;</span>
         </button>
-        <%= (Time.now.in_time_zone("Pacific Time (US & Canada)") + i.days).strftime("%A, %B %d") %>
+        <%= (Time.zone.now.in_time_zone("Pacific Time (US & Canada)") + i.days).strftime("%A, %B %d") %>
         <table class="table-sm rounded">
           <!-- Hours -->
           <tr>

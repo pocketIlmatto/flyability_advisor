@@ -2,8 +2,8 @@
   <div class="col-4 pl-2 pr-2 pb-1 pt-1 site-list-header-sites"></div>
   <div class="col-8 pl-2 pr-2 pb-1 pt-1 site-list-header-dows">
     <div class="row">
-      <% wkday = Time.now.wday %>
-      <% date = Time.now.in_time_zone("Pacific Time (US & Canada)") %>
+      <% wkday = Time.zone.now.wday %>
+      <% date = Time.zone.now.in_time_zone("Pacific Time (US & Canada)") %>
       <% day_num = date.day %>
       <% (0..6).each do |i|  %>
         <% dow = get_dow(wkday) %>

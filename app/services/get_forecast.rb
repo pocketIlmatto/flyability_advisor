@@ -1,7 +1,7 @@
 module GetForecast
 
   class NWS
-    
+
     SOURCE = 'NWS'
     TTL_HOURS = 8
 
@@ -10,9 +10,9 @@ module GetForecast
         Rails.logger.info "Cannot fetch forecast for site without GPS coordinates"
         return
       end
-      
+
       forecast = ::Forecast.where(fly_site_id: fly_site.id, source: SOURCE)
-        .where("data_updated_at >= ?", Time.now.utc - TTL_HOURS.hours).first
+        .where("data_updated_at >= ?", Time.zone.now.utc - TTL_HOURS.hours).first
       if forecast
         Rails.logger.info "Forecast found for #{fly_site.slug}. Skipping external API call."
         return
@@ -24,14 +24,14 @@ module GetForecast
         data = JSON.parse( response.body )
 
         data = data["properties"]
-        forecast = ::Forecast.find_or_initialize_by(fly_site_id: fly_site.id, 
+        forecast = ::Forecast.find_or_initialize_by(fly_site_id: fly_site.id,
           data_updated_at: data["updated"], source: SOURCE)
-        
+
         unless forecast.new_record?
           Rails.logger.info "Forecast found for #{fly_site.slug}. Check TTL"
           return
         end
-        
+
         forecast.data = data
         forecast.save!
         Rails.logger.info "Forecast saved for #{fly_site.slug}"
