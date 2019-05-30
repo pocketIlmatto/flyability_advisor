@@ -1,14 +1,14 @@
 var ScoreGradient = {
   draw : function(elementId, collapseSectionId, scores) {
     var c = document.getElementById(elementId);
-    
+
     if (c) {
       var ctx = c.getContext("2d");
 
       var grd = ctx.createLinearGradient(0, 0, c.width, 0);
-      
+
       var periods = this.countPeriods(scores);
-      
+
       var currentPeriod = 1;
       var disableCollapse = true;
 
@@ -38,26 +38,26 @@ var ScoreGradient = {
   },
 
   determineColor: function(score) {
-    var color = "#ffffff1A";
+    var color = "#ffffff";
 
     switch(score) {
+      case 1:
+        color = "#07f2b7"; // Teal
+        break;
       case 2:
-        color = "#284b5e";
+        color = "#03bf32"; // Green
         break;
       case 3:
-        color = "#4883aa";
+        color = "#fc8302"; // Orange
         break;
       case 4:
-        color = "#50c1a8";
+        color = "#7a03c4"; // Purple
         break;
       case 5:
-        color = "#3bd43f";
+        color = "#ccf902"; // Yellow
         break;
       case 6:
-        color = "#ff9900";
-        break;
-      case 7:
-        color = "#ff6600";
+        color = "#f44242"; // Red
         break;
     }
     return color;
@@ -65,7 +65,7 @@ var ScoreGradient = {
 
   componentToHex: function(c) {
     var hex = c.toString(16);
-    
+
     hex = hex.length == 1 ? "0" + hex : hex;
     return hex;
   },

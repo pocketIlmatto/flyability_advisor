@@ -18,11 +18,11 @@ module Flyability
         .in_time_zone("Pacific Time (US & Canada)").hour
 
       if time_hour <= fly_site.hourstart || time_hour >= fly_site.hourend
-        return 'not_in_flying_window' 
+        return 'not_in_flying_window'
       end
 
       short_forecast_no_gos = ['Rain Showers', 'Chance Rain Showers']
-      
+
       speed_min_act = data['speed_min_act']
       speed_max_act = data['speed_max_act']
 
@@ -34,30 +34,29 @@ module Flyability
         return 0
       end
 
+      unless fly_site.dir_edge.include?(wind_direction)
+        return 0
+      end
+
       speed_score = 0
-      direction_score = 0
-      if speed_min_act >= fly_site.speedmin_ideal && 
+      if speed_min_act >= fly_site.speedmin_ideal &&
         speed_max_act <= fly_site.speedmax_ideal
-        speed_score = 3
-      elsif speed_min_act >= fly_site.speedmin_edge && 
+        speed_score = 2
+      elsif speed_min_act >= fly_site.speedmin_edge &&
         speed_max_act <= fly_site.speedmax_edge
         speed_score = 1 if speed_min_act <= fly_site.speedmin_ideal
-        speed_score = 5 if speed_max_act >= fly_site.speedmax_ideal
+        speed_score = 3 if speed_max_act >= fly_site.speedmax_ideal
       else
-        speed_score = 0
+        return 0
       end
 
       if fly_site.dir_ideal.include?(wind_direction)
-        direction_score = 2
-      elsif fly_site.dir_edge.include?(wind_direction)
-        direction_score = 1
+        return speed_score
       else
-        direction_score = 0
+        return speed_score + 3
       end
 
-      score = speed_score + direction_score
-    
       score
     end
-  end   
+  end
 end
