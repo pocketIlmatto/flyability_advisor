@@ -127,7 +127,7 @@ function successUserLocationAsk(position) {
 
 $(document).ready(function() {
   geocoder = new google.maps.Geocoder();
-  updateSearchBar({lat: parseFloat(localStorage.latitude), lng: parseFloat(localStorage.longitude)});
+  // updateSearchBar({lat: parseFloat(localStorage.latitude), lng: parseFloat(localStorage.longitude)});
   if(localStorage.getItem('newStuffModalState') != 'shown'){
    
     $('#newStuffModal').modal('show');
